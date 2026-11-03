@@ -11,7 +11,7 @@ Website satu halaman yang meminta minat, wilayah, budget, rombongan, tanggal kun
 
 ## Fitur utama
 - Rekomendasi AI berbasis konten dengan skor transparan: 40 minat + 25 wilayah + 20 budget + 15 rombongan, maksimum 100.
-- Penyesuaian cuaca: bila peluang hujan 60% atau lebih, tempat outdoor dikurangi 15 poin, tempat indoor budaya, kuliner, dan UMKM ditambah 10 poin.
+- Penyesuaian cuaca: bila peluang hujan 60% atau lebih, tempat outdoor termasuk pura dikurangi 15 poin, tempat belanja dan kuliner indoor ditambah 10 poin.
 - Bahasa Indonesia dan Inggris.
 - Tips dan etika per tempat, estimasi biaya, dan durasi kunjungan.
 - Pencarian dan filter wisata atau UMKM.
@@ -27,14 +27,14 @@ Sistem rekomendasi berbasis konten (content-based recommender). Tidak ada panggi
 Buka file `index.html` di browser modern. Tidak perlu instalasi, tidak perlu server, tidak perlu API key. Untuk demo juri, cukup buka URL deployment dan isi formulir.
 
 ## Struktur data
-24 destinasi dan UMKM contoh di Bali, dengan kategori, wilayah, budget, rombongan yang cocok, estimasi biaya, durasi, deskripsi dua bahasa, dan tips dua bahasa. Harga adalah estimasi MVP, bukan harga resmi, dan bisa berubah. Jam buka tidak diklaim karena tidak diverifikasi dari sumber resmi per tempat.
+30 destinasi dan UMKM contoh di Bali, dengan kategori, wilayah, budget, rombongan yang cocok, estimasi biaya, durasi, deskripsi dua bahasa, dan tips dua bahasa. Harga adalah estimasi MVP, bukan harga resmi, dan bisa berubah. Jam buka tidak diklaim karena tidak diverifikasi dari sumber resmi per tempat.
 
 ## Anggota tim
 Muhammad Alva Rayno, Universitas Teuku Umar, Program Studi Teknik Mesin, NIM 2405903010094, Kabupaten Aceh Barat, Aceh.
 
 ## Keterbatasan
 - Data contoh terbatas, belum mencakup seluruh Bali.
-- Cuaca hanya tersedia sekitar 16 hari ke depan dari Open-Meteo.
+- Cuaca hanya tersedia 16 hari termasuk hari ini dari Open-Meteo.
 - Waktu tempuh adalah estimasi kondisi normal, bukan data lalu lintas real-time.
 - Kurs berubah setiap hari dan hanya estimasi.
 
