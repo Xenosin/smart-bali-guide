@@ -27,7 +27,7 @@ Sistem rekomendasi berbasis konten (content-based recommender). Tidak ada panggi
 Buka file `index.html` di browser modern. Tidak perlu instalasi, tidak perlu server, tidak perlu API key. Untuk demo juri, cukup buka URL deployment dan isi formulir.
 
 ## Struktur data
-18 destinasi dan UMKM contoh di Bali, dengan kategori, wilayah, budget, rombongan yang cocok, estimasi biaya, durasi, deskripsi dua bahasa, dan tips dua bahasa. Harga adalah estimasi MVP, bukan harga resmi, dan bisa berubah. Jam buka tidak diklaim karena tidak diverifikasi dari sumber resmi per tempat.
+24 destinasi dan UMKM contoh di Bali, dengan kategori, wilayah, budget, rombongan yang cocok, estimasi biaya, durasi, deskripsi dua bahasa, dan tips dua bahasa. Harga adalah estimasi MVP, bukan harga resmi, dan bisa berubah. Jam buka tidak diklaim karena tidak diverifikasi dari sumber resmi per tempat.
 
 ## Anggota tim
 Muhammad Alva Rayno, Universitas Teuku Umar, Program Studi Teknik Mesin, NIM 2405903010094, Kabupaten Aceh Barat, Aceh.
