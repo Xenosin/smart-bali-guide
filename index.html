@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Bali Guide - Rekomendasi Cerdas Wisata dan UMKM Bali</title>
+<style>
+*{box-sizing:border-box} body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#eef4f8;color:#16324f}
+header{background:#0b3d66;color:#fff;padding:28px 20px} header h1{margin:0 0 6px;font-size:30px} header p{margin:0;opacity:.9;max-width:760px}
+.topbar{display:flex;gap:8px;margin-top:14px} .topbar button{background:#fff;color:#0b3d66;border:0;padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer}
+main{max-width:1000px;margin:0 auto;padding:20px} .card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.08);margin-bottom:18px}
+label{font-weight:700;display:block;margin:12px 0 6px} select,input{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px}
+button.cta{background:#f59e0b;border:0;color:#1f2937;font-weight:800;padding:13px 20px;border-radius:10px;font-size:16px;cursor:pointer;margin-top:16px}
+button.small{background:#0b3d66;color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.item{border:1px solid #e2e8f0;border-radius:12px;padding:16px} .item h3{margin:0 0 6px} .tag{display:inline-block;background:#e0f2fe;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px 3px 2px 0}
+.score{font-weight:800;color:#0b3d66} .why{background:#fffbeb;border-radius:9px;padding:10px;margin-top:10px;font-size:14px}
+.tip{background:#ecfdf5;border-radius:9px;padding:10px;margin-top:10px;font-size:14px}
+small{color:#64748b} .how{line-height:1.6} .warn{background:#fef3c7;border-radius:9px;padding:12px;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+<h1 id="t-title">Smart Bali Guide</h1>
+<p id="t-sub">Rekomendasi cerdas wisata dan UMKM Bali. Jawab 4 pertanyaan, sistem AI rekomendasi kami menghitung kecocokan dan menjelaskan alasannya, bukan sekadar menampilkan daftar acak.</p>
+<p><small>AI Web Innovation Challenge - Bali Digifest 2026 | Bidang: Bali Smart Society | MVP Tahap 1</small></p>
+<div class="topbar"><button onclick="setLang('id')">Bahasa Indonesia</button><button onclick="setLang('en')">English</button></div>
+</header>
+<main>
+<div class="card">
+<h2 id="t-find">Cari rekomendasi untukmu</h2>
+<label id="l-interest">Minat utama kamu?</label>
+<select id="interest">
+<option value="alam">Wisata alam</option><option value="budaya">Budaya dan sejarah</option>
+<option value="kuliner">Kuliner</option><option value="belanja">Belanja UMKM dan kerajinan</option>
+<option value="pantai">Pantai dan santai</option>
+</select>
+<label id="l-region">Wilayah yang kamu tuju?</label>
+<select id="region">
+<option value="any">Bebas, di mana saja di Bali</option><option value="Badung">Badung</option>
+<option value="Gianyar">Gianyar</option><option value="Denpasar">Denpasar</option>
+<option value="Tabanan">Tabanan</option><option value="Klungkung">Klungkung</option><option value="Bangli">Bangli</option><option value="Karangasem">Karangasem</option><option value="Buleleng">Buleleng</option>
+</select>
+<label id="l-budget">Budget per orang?</label>
+<select id="budget">
+<option value="hemat">Hemat (di bawah Rp100 ribu)</option><option value="menengah">Menengah (Rp100-300 ribu)</option>
+<option value="premium">Premium (di atas Rp300 ribu)</option>
+</select>
+<label id="l-party">Dengan siapa kamu pergi?</label>
+<select id="party">
+<option value="keluarga">Keluarga</option><option value="pasangan">Pasangan</option>
+<option value="teman">Teman</option><option value="sendiri">Sendiri</option>
+</select>
+<label id="l-date">Tanggal kunjungan (untuk cek cuaca)</label>
+<input type="date" id="visitdate">
+<label id="l-type">Tampilkan?</label>
+<select id="type"><option value="all">Semua: wisata dan UMKM</option><option value="wisata">Hanya wisata</option><option value="umkm">Hanya UMKM</option></select>
+<label id="l-search">Cari nama tempat atau produk</label>
+<input id="search" placeholder="misalnya: pura, kopi, pantai">
+<button class="cta" onclick="recommend()" id="btn-find">Cari Rekomendasi AI</button>
+<p><small id="t-privacy">Semua rekomendasi dihitung di perangkatmu. Tidak ada data pribadi yang dikirim ke server, tidak ada API key.</small></p>
+</div>
+
+<div class="card how">
+<h2 id="t-how">Bagaimana AI ini bekerja?</h2>
+<p id="t-howp">Ini adalah <b>sistem rekomendasi berbasis konten (content-based recommender)</b>, salah satu teknologi AI yang diakui panduan lomba. Setiap destinasi dan UMKM punya profil: kategori minat, wilayah, kisaran budget, dan cocok untuk siapa. Saat kamu mengisi formulir, sistem memberi skor untuk setiap profil: <b>Skor = 40 x kecocokan minat + 25 x kecocokan wilayah + 20 x kecocokan budget + 15 x kecocokan rombongan.</b> Hasil diurutkan dari skor tertinggi, dan setiap hasil menampilkan alasan kecocokannya. Jadi rekomendasi ini bisa dijelaskan, bukan kotak hitam.</p>
+<div class="warn" id="t-warn"><b>Untuk wisatawan asing dan semua pengunjung:</b> hormati adat setempat. Masuk pura wajib memakai kain dan selendang, ikuti arahan petugas, jangan memotret upacara tanpa izin, dan periksa arus laut sebelum berenang. Harga di bawah adalah estimasi MVP, bukan harga resmi, dan bisa berubah.</div>
+</div>
+
+<div id="weather"></div>
+<div id="results"></div>
+
+<div class="card">
+<h2 id="t-trip">Itinerary saya</h2>
+<p id="t-tripp">Simpan tempat dari hasil rekomendasi ke sini. Itinerary tersimpan di perangkatmu dan dikelompokkan per wilayah supaya perjalananmu tidak bolak-balik.</p>
+<div id="trip"></div>
+</div>
+
+
+<div class="card">
+<h2 id="t-money">Konverter mata uang untuk wisatawan</h2>
+<p>Masukkan jumlah dalam Rupiah, lihat estimasi dalam USD dan EUR. Kurs diambil dari Frankfurter, gratis tanpa API key. Jika kurs gagal dimuat, konverter memakai kurs cadangan yang jelas ditulis sebagai estimasi dan bukan kurs resmi.</p>
+<label>Jumlah (Rp)</label><input type="number" id="idr" value="500000">
+<button class="cta" onclick="convert()">Hitung Estimasi</button>
+<p id="fxout"></p>
+<p><small>Kurs adalah estimasi dan berubah setiap hari. Selalu cek kurs resmi sebelum transaksi besar.</small></p>
+</div>
+
+<div class="card">
+<h2 id="t-safe">Nomor darurat dan info penting di Bali</h2>
+<p><b>Darurat umum Indonesia: 112</b> | <b>Polisi: 110</b> | <b>Ambulans: 118 / 119</b> | <b>Pemadam kebakaran: 113</b></p>
+<p>Untuk wisatawan: simpan nomor hotel dan pemandu, bawa fotokopi paspor, dan hubungi kedutaan masing-masing bila paspor hilang. Nomor-nomor di atas adalah nomor darurat publik Indonesia, bukan nomor pribadi panitia atau tim.</p>
+<p><b>Estimasi waktu tempuh antar wilayah (kendaraan, kondisi normal, bukan jaminan):</b> Denpasar ke Badung sekitar 30 menit, Denpasar ke Gianyar sekitar 45-60 menit, Gianyar ke Tabanan sekitar 60-90 menit, Denpasar ke Buleleng sekitar 2-3 jam, Denpasar ke Klungkung sekitar 45-60 menit. Macet, upacara, dan cuaca bisa menambah waktu secara signifikan. Rencanakan maksimal 2 wilayah besar per hari.</p>
+</div>
+
+<div class="card">
+<h2 id="t-share">Bagikan itinerary</h2>
+<p>Salin itinerary yang sudah disimpan, atau buka WhatsApp dengan teks itinerary yang sudah disiapkan. Tidak ada data yang dikirim ke server kami, teks hanya dibuka di aplikasi WhatsApp di perangkatmu.</p>
+<button class="cta" onclick="shareTrip()">Bagikan via WhatsApp</button>
+<button class="cta" onclick="copyTrip()">Salin Itinerary</button>
+<p id="shareout"></p>
+</div>
+
+<div class="card">
+<h2 id="t-about">Tentang produk ini</h2>
+<p id="t-aboutp">Smart Bali Guide dibuat untuk masalah nyata: wisatawan dan warga sering bingung memilih destinasi dan UMKM yang sesuai budget, minat, dan wilayah, sehingga UMKM lokal yang bagus kalah dari tempat yang sekadar viral. MVP ini menghubungkan keduanya dalam satu rekomendasi yang transparan, lengkap dengan tips etika, estimasi biaya, dan durasi kunjungan.</p>
+<p><small>Data contoh MVP: 18 destinasi dan UMKM di Bali. Harga adalah estimasi, bukan harga resmi. Data lengkap, sumber, dan batasan produk ditulis di README repositori.</small></p>
+</div>
+</main>
+<script>
+let LANG='id';
+const T={
+id:{find:'Cari rekomendasi untukmu',interest:'Minat utama kamu?',region:'Wilayah yang kamu tuju?',budget:'Budget per orang?',party:'Dengan siapa kamu pergi?',type:'Tampilkan?',search:'Cari nama tempat atau produk',btn:'Cari Rekomendasi AI',how:'Bagaimana AI ini bekerja?',trip:'Itinerary saya',about:'Tentang produk ini',money:'Konverter mata uang untuk wisatawan',safe:'Nomor darurat dan info penting di Bali',share:'Bagikan itinerary',score:'Skor kecocokan',why:'Kenapa cocok',tip:'Tips dan etika',save:'Simpan ke itinerary',saved:'Tersimpan di itinerary',cost:'Estimasi biaya',time:'Durasi'},
+en:{find:'Find recommendations for you',interest:'What is your main interest?',region:'Which region are you heading to?',budget:'Budget per person?',party:'Who are you travelling with?',type:'Show?',search:'Search a place or product',btn:'Find AI Recommendations',how:'How does this AI work?',trip:'My itinerary',about:'About this product',money:'Currency converter for visitors',safe:'Emergency numbers and key information in Bali',share:'Share itinerary',score:'Match score',why:'Why it fits',tip:'Tips and etiquette',save:'Save to itinerary',saved:'Saved to itinerary',cost:'Estimated cost',time:'Duration'}
+};
+const DATA=[
+{n:'Pura Ulun Danu Beratan',t:'wisata',cat:'budaya',reg:'Tabanan',bud:'hemat',cost:75000,party:['keluarga','pasangan','teman'],id:'Pura ikonik di tepi Danau Beratan, Bedugul.',en:'Iconic temple on the shore of Lake Beratan, Bedugul.',tipid:'Pakai kain dan selendang, ikuti arahan petugas pura.',tipen:'Wear a sarong and sash, and follow temple staff instructions.',dur:'1-2 jam'},
+{n:'Tegalalang Rice Terrace',t:'wisata',cat:'alam',reg:'Gianyar',bud:'hemat',cost:50000,party:['keluarga','pasangan','teman','sendiri'],id:'Sawah terasering hijau yang terkenal di Ubud.',en:'Famous green rice terraces in Ubud.',tipid:'Pakai alas kaki nyaman, jalur bisa licin saat hujan.',tipen:'Wear comfortable shoes; paths can be slippery when wet.',dur:'1-2 jam'},
+{n:'Pantai Kuta',t:'wisata',cat:'pantai',reg:'Badung',bud:'hemat',cost:0,party:['teman','pasangan','sendiri'],id:'Pantai populer untuk berselancar pemula dan matahari terbenam.',en:'Popular beach for beginner surfing and sunsets.',tipid:'Periksa arus dan bendera peringatan sebelum berenang.',tipen:'Check currents and warning flags before swimming.',dur:'2-3 jam'},
+{n:'Pantai Pandawa',t:'wisata',cat:'pantai',reg:'Badung',bud:'hemat',cost:30000,party:['keluarga','pasangan'],id:'Pantai pasir putih di balik tebing kapur.',en:'White sand beach behind limestone cliffs.',tipid:'Bawa air minum, area pantai cukup terbuka dan panas.',tipen:'Bring drinking water; the beach area is open and hot.',dur:'2-3 jam'},
+{n:'Pasar Seni Sukawati',t:'umkm',cat:'belanja',reg:'Gianyar',bud:'hemat',cost:100000,party:['keluarga','teman'],id:'Pusat kerajinan dan oleh-oleh UMKM Bali.',en:'Centre for Balinese crafts and souvenirs from local MSMEs.',tipid:'Tawar dengan sopan, tanyakan apakah produk buatan pengrajin lokal.',tipen:'Bargain politely, and ask whether the product is made by local artisans.',dur:'1-2 jam'},
+{n:'UMKM Kopi Kintamani',t:'umkm',cat:'kuliner',reg:'Bangli',bud:'menengah',cost:150000,party:['keluarga','pasangan','teman'],id:'Kopi arabika dari petani di dataran tinggi Kintamani.',en:'Arabica coffee from farmers in the Kintamani highlands.',tipid:'Tanyakan asal biji dan proses sangrai langsung ke penjual.',tipen:'Ask the seller directly about bean origin and roasting.',dur:'1 jam'},
+{n:'Warung Babi Guling Ibu Oka',t:'umkm',cat:'kuliner',reg:'Gianyar',bud:'hemat',cost:80000,party:['keluarga','teman'],id:'Kuliner khas Bali yang legendaris di Ubud.',en:'Legendary Balinese roast pork in Ubud.',tipid:'Datang lebih awal, warung ini sering antre.',tipen:'Come early; this warung often has a queue.',dur:'1 jam'},
+{n:'Desa Penglipuran',t:'wisata',cat:'budaya',reg:'Bangli',bud:'hemat',cost:50000,party:['keluarga','pasangan'],id:'Desa adat yang bersih dan terjaga, cocok untuk belajar budaya Bali.',en:'Clean, well-kept traditional village, great for learning Balinese culture.',tipid:'Jaga ketenangan, jangan masuk halaman rumah tanpa izin.',tipen:'Keep noise down, and do not enter house yards without permission.',dur:'1-2 jam'},
+{n:'Air Terjun Sekumpul',t:'wisata',cat:'alam',reg:'Buleleng',bud:'menengah',cost:125000,party:['teman','pasangan'],id:'Air terjun bertingkat di kawasan hutan Bali utara.',en:'Tiered waterfalls in the forests of North Bali.',tipid:'Butuh fisik cukup baik, jalurnya menanjak dan licin.',tipen:'Requires reasonable fitness; the trail is steep and slippery.',dur:'2-3 jam'},
+{n:'Pura Tanah Lot',t:'wisata',cat:'budaya',reg:'Tabanan',bud:'hemat',cost:60000,party:['keluarga','pasangan','teman'],id:'Pura laut di atas batu karang, terkenal saat matahari terbenam.',en:'Sea temple on a rock, famous at sunset.',tipid:'Pakai kain dan selendang, jangan memanjat batu karang.',tipen:'Wear a sarong and sash, and do not climb the rocks.',dur:'1-2 jam'},
+{n:'Jatiluwih Rice Terraces',t:'wisata',cat:'alam',reg:'Tabanan',bud:'hemat',cost:40000,party:['keluarga','pasangan'],id:'Sawah terasering warisan UNESCO yang luas dan tenang.',en:'Vast, calm UNESCO-listed rice terraces.',tipid:'Jangan menginjak tanaman padi, ikuti jalur yang tersedia.',tipen:'Do not step on rice plants; stay on the provided paths.',dur:'1-2 jam'},
+{n:'Pantai Sanur',t:'wisata',cat:'pantai',reg:'Denpasar',bud:'hemat',cost:0,party:['keluarga','pasangan','sendiri'],id:'Pantai tenang di timur Denpasar, cocok untuk keluarga.',en:'Calm beach east of Denpasar, good for families.',tipid:'Cocok untuk anak-anak, tetap awasi anak di air.',tipen:'Good for children, but always supervise them in the water.',dur:'2-3 jam'},
+{n:'Kerajinan Perak Celuk',t:'umkm',cat:'belanja',reg:'Gianyar',bud:'menengah',cost:200000,party:['keluarga','pasangan'],id:'Perajin perak Celuk, pusat kerajinan perak Bali.',en:'Celuk silversmiths, the centre of Balinese silver craft.',tipid:'Minta sertifikat atau penjelasan bahan sebelum membeli perak.',tipen:'Ask for material details before buying silver.',dur:'1-2 jam'},
+{n:'Kain Endek Klungkung',t:'umkm',cat:'belanja',reg:'Klungkung',bud:'menengah',cost:250000,party:['keluarga','teman'],id:'Tenun endek khas Klungkung dari pengrajin lokal.',en:'Klungkung endek woven cloth from local weavers.',tipid:'Tanyakan cara perawatan kain tenun ke penjual.',tipen:'Ask the seller how to care for woven cloth.',dur:'1 jam'},
+{n:'Nasi Campur Bali Denpasar',t:'umkm',cat:'kuliner',reg:'Denpasar',bud:'hemat',cost:50000,party:['keluarga','teman','sendiri'],id:'Warung nasi campur khas Denpasar dengan harga terjangkau.',en:'Affordable mixed rice warung in Denpasar.',tipid:'Tanyakan level pedas sebelum memesan.',tipen:'Ask about spice level before ordering.',dur:'1 jam'},
+{n:'ATV dan Rafting Ayung',t:'wisata',cat:'alam',reg:'Gianyar',bud:'premium',cost:500000,party:['teman','pasangan'],id:'Aktivitas petualangan di Sungai Ayung, Ubud.',en:'Adventure activities on the Ayung River, Ubud.',tipid:'Ikuti instruksi pemandu, pakai pelampung dan helm.',tipen:'Follow guide instructions, and wear a life jacket and helmet.',dur:'3-4 jam'},
+{n:'Pura Besakih',t:'wisata',cat:'budaya',reg:'Karangasem',bud:'menengah',cost:60000,party:['keluarga','pasangan'],id:'Kompleks pura terbesar dan tertua di Bali, di lereng Gunung Agung.',en:'The largest and oldest temple complex in Bali, on Mount Agung slopes.',tipid:'Pakai kain dan selendang, gunakan pemandu resmi bila ditawarkan.',tipen:'Wear a sarong and sash, and use an official guide if offered.',dur:'2-3 jam'},
+{n:'Pantai Lovina',t:'wisata',cat:'pantai',reg:'Buleleng',bud:'menengah',cost:150000,party:['keluarga','pasangan'],id:'Pantai tenang di Bali utara, terkenal untuk melihat lumba-lumba.',en:'Calm North Bali beach, famous for dolphin watching.',tipid:'Pilih operator perahu yang memakai pelampung dan menjaga jarak dari lumba-lumba.',tipen:'Choose a boat operator that provides life jackets and keeps distance from dolphins.',dur:'3-4 jam'}
+];
+let trip=JSON.parse(localStorage.getItem('sbg-trip')||'[]');
+(function(){const el=document.getElementById('visitdate'); if(!el) return; const t=new Date(), m=new Date(); m.setDate(t.getDate()+16); const f=d=>d.toISOString().slice(0,10); el.min=f(t); el.max=f(m);})();
+function fmt(n){return 'Rp'+n.toLocaleString('id-ID');}
+function setLang(l){LANG=l; const d=T[l];
+document.getElementById('t-find').textContent=d.find; document.getElementById('l-interest').textContent=d.interest;
+document.getElementById('l-region').textContent=d.region; document.getElementById('l-budget').textContent=d.budget;
+document.getElementById('l-party').textContent=d.party; document.getElementById('l-type').textContent=d.type;
+document.getElementById('l-search').textContent=d.search; document.getElementById('l-date').textContent=(LANG==='id'?'Tanggal kunjungan (untuk cek cuaca)':'Visit date (for weather check)'); document.getElementById('btn-find').textContent=d.btn;
+document.getElementById('t-how').textContent=d.how; document.getElementById('t-trip').textContent=d.trip; document.getElementById('t-about').textContent=d.about;
+document.getElementById('t-money').textContent=d.money; document.getElementById('t-safe').textContent=d.safe; document.getElementById('t-share').textContent=d.share;
+const opt={interest:{alam:['Wisata alam','Nature tourism'],budaya:['Budaya dan sejarah','Culture and history'],kuliner:['Kuliner','Food'],belanja:['Belanja UMKM dan kerajinan','MSME shopping and crafts'],pantai:['Pantai dan santai','Beach and relaxation']},budget:{hemat:['Hemat (di bawah Rp100 ribu)','Budget (under Rp100 thousand)'],menengah:['Menengah (Rp100-300 ribu)','Mid-range (Rp100-300 thousand)'],premium:['Premium (di atas Rp300 ribu)','Premium (over Rp300 thousand)']},party:{keluarga:['Keluarga','Family'],pasangan:['Pasangan','Couple'],teman:['Teman','Friends'],sendiri:['Sendiri','Solo']},type:{all:['Semua: wisata dan UMKM','All: tourism and MSMEs'],wisata:['Hanya wisata','Tourism only'],umkm:['Hanya UMKM','MSMEs only']}};
+for(const sid of Object.keys(opt)){const sel=document.getElementById(sid); if(!sel) continue; for(const o of sel.options){if(opt[sid][o.value]) o.textContent=opt[sid][o.value][l==='id'?0:1];}}
+renderTrip();
+if(document.getElementById('results').innerHTML.trim()){recommend();}
+
+}
+
+const COORDS={Badung:[-8.70,115.18],Gianyar:[-8.54,115.26],Denpasar:[-8.65,115.22],Tabanan:[-8.54,115.13],Klungkung:[-8.53,115.40],Bangli:[-8.45,115.35],Karangasem:[-8.38,115.60],Buleleng:[-8.11,115.09]};
+function wdesc(c){if(c===0)return LANG==='id'?'Cerah':'Clear sky';if(c<=2)return LANG==='id'?'Berawan sebagian':'Partly cloudy';if(c<=48)return LANG==='id'?'Berkabut':'Foggy';if(c<=67)return LANG==='id'?'Hujan':'Rain';if(c<=77)return LANG==='id'?'Hujan salju (tidak umum di Bali, cek ulang)':'Snow (unusual in Bali, double-check)';if(c<=82)return LANG==='id'?'Hujan deras':'Heavy rain';return LANG==='id'?'Badai petir':'Thunderstorm';}
+let WEATHER=null;
+async function loadWeather(){
+  const date=document.getElementById('visitdate').value; const region=document.getElementById('region').value;
+  const box=document.getElementById('weather'); if(!date){box.innerHTML=''; WEATHER=null; return;}
+  const vd=document.getElementById('visitdate'); if(vd.min&&vd.max&&(date<vd.min||date>vd.max)){box.innerHTML='<div class="card"><p>'+(LANG==='id'?'Tanggal di luar jangkauan prakiraan (maksimal 16 hari ke depan). Rekomendasi tetap jalan tanpa penyesuaian cuaca.':'Date is beyond the forecast range (maximum 16 days ahead). Recommendations still work without weather adjustment.')+'</p></div>'; WEATHER=null; return;}
+  const reg=region==='any'?'Denpasar':region; const [lat,lon]=COORDS[reg];
+  box.innerHTML='<div class="card"><p>'+(LANG==='id'?'Memuat prakiraan cuaca...':'Loading weather forecast...')+'</p></div>';
+  try{
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=Asia%2FMakassar&start_date=${date}&end_date=${date}`);
+    const j=await r.json(); const d=j.daily;
+    if(!d||!d.time||!d.time.length) throw new Error('no data');
+    WEATHER={rain:d.precipitation_probability_max[0],code:d.weathercode[0],tmax:d.temperature_2m_max[0],tmin:d.temperature_2m_min[0],region:reg,date};
+    const rainNote=WEATHER.rain>=60?(LANG==='id'?'Peluang hujan tinggi. Rekomendasi di bawah menyesuaikan: tempat outdoor dikurangi skornya, tempat budaya, kuliner, dan UMKM indoor diprioritaskan.':'High rain chance. Recommendations below adjust: outdoor places lose points, indoor culture, food, and MSME places are prioritised.'):(LANG==='id'?'Cuaca relatif mendukung aktivitas outdoor.':'Weather is relatively good for outdoor activities.');
+    box.innerHTML=`<div class="card"><h2>${LANG==='id'?'Cuaca pada tanggal kunjungan':'Weather on your visit date'}</h2><p><b>${reg}, ${date} (WITA)</b><br>${wdesc(WEATHER.code)} | ${WEATHER.tmin} - ${WEATHER.tmax} C | ${LANG==='id'?'Peluang hujan':'Rain chance'}: ${WEATHER.rain}%</p><p>${rainNote}</p><p><small>${LANG==='id'?'Sumber: Open-Meteo, gratis tanpa API key. Prakiraan hanya tersedia sekitar 16 hari ke depan; di luar itu cuaca tidak bisa ditampilkan.':'Source: Open-Meteo, free with no API key. Forecasts cover about 16 days ahead; beyond that weather cannot be shown.'}</small></p></div>`;
+  }catch(e){ WEATHER=null; box.innerHTML='<div class="card"><p>'+(LANG==='id'?'Cuaca tidak bisa dimuat saat ini. Periksa koneksi internet atau tanggal di luar jangkauan prakiraan, lalu coba lagi. Rekomendasi tetap jalan tanpa penyesuaian cuaca.':'Weather could not be loaded right now. Check your connection or whether the date is beyond the forecast range, then try again. Recommendations still work without weather adjustment.')+'</p></div>'; }
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+async function recommend(){
+  await loadWeather();
+  const interest=document.getElementById('interest').value, region=document.getElementById('region').value,
+  budget=document.getElementById('budget').value, party=document.getElementById('party').value,
+  type=document.getElementById('type').value, q=(document.getElementById('search').value||'').toLowerCase();
+  const d=T[LANG];
+  const scored=DATA.filter(x=>(type==='all'||x.t===type)&&(!q||x.n.toLowerCase().includes(q)||x.id.toLowerCase().includes(q)||x.en.toLowerCase().includes(q))).map(x=>{
+    let s=0, reasons=[];
+    if(x.cat===interest){s+=40; reasons.push(LANG==='id'?'minatmu cocok':'your interest matches');}
+    if(region==='any'||x.reg===region){s+=(region==='any'?10:25); if(region!=='any') reasons.push(LANG==='id'?'wilayahnya sesuai':'the region matches');}
+    if(x.bud===budget){s+=20; reasons.push(LANG==='id'?'budgetnya sesuai':'the budget matches');}
+    if(x.party.includes(party)){s+=15; reasons.push(LANG==='id'?'cocok untuk rombonganmu':'fits your travel party');}
+    if(WEATHER && WEATHER.rain>=60){
+      if(x.cat==='pantai'||x.cat==='alam'){s-=15; reasons.push(LANG==='id'?'dikurangi karena peluang hujan tinggi':'reduced due to high rain chance');}
+      if(x.cat==='budaya'||x.cat==='belanja'||x.cat==='kuliner'){s+=10; reasons.push(LANG==='id'?'diprioritaskan saat hujan':'prioritised when rainy');}
+    }
+    s=Math.max(0,Math.min(100,s));
+    return {...x,score:s,reasons,_idx:DATA.indexOf(x)};
+  }).sort((a,b)=>b.score-a.score).slice(0,6);
+  const box=document.getElementById('results');
+  if(!scored.length){box.innerHTML='<div class="card"><p>'+(LANG==='id'?'Tidak ada hasil yang cocok. Coba ubah kata kunci atau filter.':'No matching results. Try changing the keyword or filters.')+'</p></div>'; return;}
+  box.innerHTML='<div class="card"><h2>'+(LANG==='id'?'Hasil rekomendasi untukmu':'Recommendations for you')+'</h2><p>'+(LANG==='id'?'Diurutkan dari skor kecocokan tertinggi. Skor maksimum 100.':'Sorted by highest match score. Maximum score is 100.')+'</p><div class="grid">'+
+  scored.map((x,i)=>`<div class="item"><h3>${esc(x.n)}</h3><span class="tag">${x.t==='umkm'?(LANG==='id'?'UMKM':'MSME'):(LANG==='id'?'Wisata':'Tourism')}</span><span class="tag">${esc(x.reg)}</span><span class="tag">${esc(x.bud)}</span><p>${esc(LANG==='id'?x.id:x.en)}</p><p class="score">${T[LANG].score}: ${x.score}/100</p><p>${T[LANG].cost}: ${fmt(x.cost)} | ${T[LANG].time}: ${LANG==='id'?x.dur:x.dur.replace(' jam',' hours')}</p><div class="why">${T[LANG].why}: ${x.reasons.length?x.reasons.join(', '):(LANG==='id'?'pilihan umum yang masih relevan.':'a general option that is still relevant.')}</div><div class="tip">${T[LANG].tip}: ${esc(LANG==='id'?x.tipid:x.tipen)}</div><button class="small" onclick="addTrip(${x._idx})">${T[LANG].save}</button></div>`).join('')+'</div></div>';
+  box.scrollIntoView({behavior:'smooth'});
+}
+function addTrip(i){ const x=DATA[i]; if(!trip.find(y=>y.n===x.n)){trip.push(x); localStorage.setItem('sbg-trip',JSON.stringify(trip));} renderTrip(); alert(T[LANG].saved+': '+x.n); }
+
+async function convert(){
+  const idr=parseFloat(document.getElementById('idr').value||0); const out=document.getElementById('fxout');
+  try{
+    const r=await fetch('https://api.frankfurter.app/latest?from=IDR&to=USD,EUR');
+    const j=await r.json(); const usd=idr*j.rates.USD, eur=idr*j.rates.EUR;
+    out.textContent=`Rp${idr.toLocaleString('id-ID')} = sekitar $${usd.toFixed(2)} USD / ${eur.toFixed(2)} EUR (kurs Frankfurter, ${j.date})`;
+  }catch(e){
+    const usd=idr/16500, eur=idr/19000;
+    out.textContent=`Rp${idr.toLocaleString('id-ID')} = sekitar $${usd.toFixed(2)} USD / ${eur.toFixed(2)} EUR (kurs cadangan estimasi, karena kurs live gagal dimuat)`;
+  }
+}
+function tripText(){
+  if(!trip.length) return LANG==='id'?'Itinerary Smart Bali Guide saya masih kosong.':'My Smart Bali Guide itinerary is still empty.';
+  const total=trip.reduce((a,x)=>a+x.cost,0);
+  return (LANG==='id'?'Itinerary Smart Bali Guide saya: ':'My Smart Bali Guide itinerary: ')+trip.map(x=>x.n+' ('+x.reg+')').join(', ')+` | ${LANG==='id'?'Total estimasi':'Total estimated'}: Rp${total.toLocaleString('id-ID')}`;
+}
+function shareTrip(){ window.open('https://wa.me/?text='+encodeURIComponent(tripText()),'_blank'); }
+function copyTrip(){ navigator.clipboard.writeText(tripText()).then(()=>{document.getElementById('shareout').textContent=LANG==='id'?'Itinerary disalin.':'Itinerary copied.';}); }
+function renderTrip(){
+  const el=document.getElementById('trip'); if(!trip.length){el.innerHTML='<p>'+(LANG==='id'?'Belum ada tempat tersimpan.':'Nothing saved yet.')+'</p>'; return;}
+  const total=trip.reduce((a,x)=>a+x.cost,0);
+  const by={}; trip.forEach(x=>{(by[x.reg]=by[x.reg]||[]).push(x);});
+  el.innerHTML=Object.keys(by).map(r=>`<h3>${esc(r)}</h3><ul>${by[r].map(x=>`<li>${esc(x.n)} - ${fmt(x.cost)}</li>`).join('')}</ul>`).join('')+`<p><b>${LANG==='id'?'Total estimasi biaya':'Total estimated cost'}: ${fmt(total)}</b></p><button class="small" onclick="trip=[];localStorage.removeItem('sbg-trip');renderTrip();">${LANG==='id'?'Hapus itinerary':'Clear itinerary'}</button>`;
+}
+renderTrip();
+</script>
+</body>
+</html>
