@@ -10,8 +10,8 @@ Wisatawan dan warga kesulitan memilih destinasi dan UMKM di Bali yang sesuai min
 Website satu halaman yang meminta minat, wilayah, budget, rombongan, tanggal kunjungan, dan kata kunci, lalu memberi rekomendasi terurut dengan skor dan alasan yang bisa dijelaskan.
 
 ## Fitur
-- **Foto kurasi per tempat**: 37 dari 45 tempat memakai foto Wikimedia Commons yang sudah diperiksa judulnya; 8 tempat tanpa foto terverifikasi memakai gradasi, bukan foto salah tempat.
-- **Jarak nyata**: 26 tempat punya koordinat terverifikasi OpenStreetMap; penginapan dekat diurutkan per km garis lurus (estimasi, bukan jarak jalan raya); tempat tanpa koordinat memakai pusat wilayah.
+- **Foto kurasi per tempat**: semua 45 tempat kini punya foto Wikimedia Commons yang diperiksa judulnya; 37 foto tempat langsung dan 8 foto ilustrasi area/aktivitas yang diberi label ilustrasi, bukan diklaim foto tempat itu.
+- **Jarak nyata**: 39 tempat punya koordinat terverifikasi OpenStreetMap (6 sisanya memakai pusat wilayah); penginapan dekat diurutkan per km garis lurus (estimasi, bukan jarak jalan raya); tempat tanpa koordinat memakai pusat wilayah.
 - **Bintang dan favorit**: beri bintang 1-5 per tempat, tersimpan di perangkat, menaikkan skor rekomendasi (+2 per bintang), ada urutan Favorit dulu dan daftar favorit.
 - **Komentar per destinasi**: tiap kartu hasil bisa dikomentari, tersimpan di perangkat (belum global; komentar global butuh server/API).
 - **Lapor masalah**: kartu laporan (data salah, foto tidak sesuai, harga meleset, tutup/pindah) via WhatsApp atau salin teks; produk belum punya nomor CS resmi, jadi penerima dipilih pengguna sendiri.
