@@ -19,6 +19,9 @@ Website satu halaman yang meminta minat, wilayah, budget, rombongan, tanggal kun
 - Konverter mata uang IDR ke USD dan EUR.
 - Nomor darurat publik Indonesia dan estimasi waktu tempuh antar wilayah.
 - Bagikan itinerary lewat WhatsApp atau salin teks.
+- Peta Google Maps yang disematkan di halaman, plus tautan Google Maps dan OpenStreetMap di setiap hasil rekomendasi.
+- Filter batas biaya maksimum per orang.
+- Tombol cetak khusus itinerary (saat print, hanya bagian itinerary yang tercetak).
 
 ## Teknologi AI
 Sistem rekomendasi berbasis konten (content-based recommender). Tidak ada panggilan model bahasa eksternal, tidak ada API key, tidak ada server, dan tidak ada data pribadi yang dikirim keluar. Cuaca dari Open-Meteo (gratis, tanpa API key). Kurs dari Frankfurter (gratis, tanpa API key). Jika layanan eksternal gagal, aplikasi tetap jalan dengan pesan yang jujur dan kurs cadangan yang dinyatakan sebagai estimasi.
