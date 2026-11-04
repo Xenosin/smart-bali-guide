@@ -9,7 +9,16 @@ Wisatawan dan warga kesulitan memilih destinasi dan UMKM di Bali yang sesuai min
 ## Solusi
 Website satu halaman yang meminta minat, wilayah, budget, rombongan, tanggal kunjungan, dan kata kunci, lalu memberi rekomendasi terurut dengan skor dan alasan yang bisa dijelaskan.
 
-## Fitur utama
+## Fitur
+- **Foto kurasi per tempat**: 37 dari 45 tempat memakai foto Wikimedia Commons yang sudah diperiksa judulnya; 8 tempat tanpa foto terverifikasi memakai gradasi, bukan foto salah tempat.
+- **Jarak nyata**: 26 tempat punya koordinat terverifikasi OpenStreetMap; penginapan dekat diurutkan per km garis lurus (estimasi, bukan jarak jalan raya); tempat tanpa koordinat memakai pusat wilayah.
+- **Bintang dan favorit**: beri bintang 1-5 per tempat, tersimpan di perangkat, menaikkan skor rekomendasi (+2 per bintang), ada urutan Favorit dulu dan daftar favorit.
+- **Komentar per destinasi**: tiap kartu hasil bisa dikomentari, tersimpan di perangkat (belum global; komentar global butuh server/API).
+- **Lapor masalah**: kartu laporan (data salah, foto tidak sesuai, harga meleset, tutup/pindah) via WhatsApp atau salin teks; produk belum punya nomor CS resmi, jadi penerima dipilih pengguna sendiri.
+- **Terdekat dari lokasiku**: tombol geolocation browser, lokasi tidak dikirim ke server.
+- **Rute 1 hari otomatis**: 3 wisata + 1 kuliner/UMKM per wilayah dengan total estimasi, bisa disimpan ke itinerary.
+- **Mode gelap**: tombol Mode gelap di header.
+- **API key opsional**: versi ini tanpa key; key Google Maps/Places hanya untuk fitur lanjutan Tahap 2 (foto resmi, jarak jalan raya) dan tidak boleh ditulis di repo (lihat .env.example). utama
 - Rekomendasi AI berbasis konten dengan skor transparan: 40 minat + 25 wilayah + 20 budget + 15 rombongan, maksimum 100.
 - Penyesuaian cuaca: bila peluang hujan 60% atau lebih, tempat outdoor termasuk pura dikurangi 15 poin, tempat belanja dan kuliner indoor ditambah 10 poin.
 - Bahasa Indonesia dan Inggris.
