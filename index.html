@@ -5,164 +5,1426 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Bali Guide - Rekomendasi Cerdas Wisata dan UMKM Bali</title>
 <style>
-*{box-sizing:border-box}
-:root{--navy:#0b3d66;--teal:#0ea5a4;--gold:#f59e0b;--ink:#16324f}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--ink);background:linear-gradient(120deg,#e0f2fe,#fef3c7,#e0f2fe);background-size:300% 300%;animation:sky 18s ease infinite}
-@keyframes sky{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-header{background:linear-gradient(120deg,#0b3d66,#0e7490,#f59e0b);background-size:200% 200%;animation:sky 14s ease infinite;color:#fff;padding:36px 20px;position:relative;overflow:hidden}
-header::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.18);filter:blur(2px)}
-header h1{margin:0 0 6px;font-size:34px;letter-spacing:.5px;animation:fadeUp .7s ease both} header p{margin:0;opacity:.95;max-width:760px;animation:fadeUp .7s .1s ease both}
-.topbar{display:flex;gap:8px;margin-top:14px;position:relative;z-index:1} .topbar button{background:rgba(255,255,255,.95);color:var(--navy);border:0;padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s} .topbar button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
-main{max-width:1000px;margin:0 auto;padding:20px} .card{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(11,61,102,.14);margin-bottom:20px;border:1px solid rgba(255,255,255,.7);animation:fadeUp .6s ease both;transition:transform .25s,box-shadow .25s} .card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(11,61,102,.18)}
-label{font-weight:700;display:block;margin:12px 0 6px} select,input{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;transition:border-color .2s,box-shadow .2s} select:focus,input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,165,164,.25)}
-button.cta{background:linear-gradient(90deg,#f59e0b,#f97316);border:0;color:#fff;font-weight:800;padding:13px 20px;border-radius:12px;font-size:16px;cursor:pointer;margin-top:16px;transition:transform .2s,filter .2s} button.cta:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.05)} button.cta:active{transform:scale(.98)}
-button.small{background:var(--navy);color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;margin-top:10px;transition:transform .2s,background .2s} button.small:hover{transform:translateY(-1px);background:#0e7490}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-.item{border:1px solid #e2e8f0;border-radius:16px;padding:0 0 16px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.07);animation:fadeUp .6s ease both;transition:transform .3s,box-shadow .3s} .item:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 18px 36px rgba(11,61,102,.22)}
-.item .body{padding:0 16px} .item h3{margin:12px 0 6px}
-.photo{height:180px;background:linear-gradient(120deg,#0e7490,#f59e0b);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;color:#fff;font-size:44px;font-weight:800}
-.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s} .item:hover .photo img{transform:scale(1.06)}
-.photo .cap{position:absolute;left:8px;bottom:8px;font-size:11px;font-weight:600;background:rgba(0,0,0,.55);padding:3px 8px;border-radius:20px}
-.tag{display:inline-block;background:#e0f2fe;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px 3px 2px 0}
-.score{font-weight:800;color:var(--navy)} .why{background:#fffbeb;border-radius:9px;padding:10px;margin-top:10px;font-size:14px}
-.tip{background:#ecfdf5;border-radius:9px;padding:10px;margin-top:10px;font-size:14px}
-small{color:#64748b} .how{line-height:1.6} .warn{background:#fef3c7;border-radius:9px;padding:12px;font-size:14px}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media print{body *{visibility:hidden} #trip,#trip *{visibility:visible} #trip{position:absolute;left:0;top:0;width:100%}}
-body.big{font-size:18px}
-body.dark{background:#0f172a;color:#e2e8f0} body.dark .card{background:rgba(30,41,59,.95);color:#e2e8f0;border-color:#334155} body.dark .item{background:#1e293b;color:#e2e8f0;border-color:#334155} body.dark select,body.dark input,body.dark textarea{background:#0f172a;color:#e2e8f0;border-color:#475569} body.dark .why{background:#422006;color:#fde68a} body.dark .tip{background:#052e16;color:#bbf7d0}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #0a2e4d;
+  --teal: #0d9488;
+  --teal-light: #2dd4bf;
+  --gold: #f59e0b;
+  --amber: #ea580c;
+  --coral: #f43f5e;
+  --ink: #132a3e;
+  --sand: #fffbeb;
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(255, 255, 255, 0.85);
+  --shadow-soft: 0 14px 38px rgba(10, 46, 77, 0.12), 0 4px 12px rgba(13, 148, 136, 0.08);
+  --shadow-hover: 0 22px 48px rgba(10, 46, 77, 0.2), 0 8px 20px rgba(245, 158, 11, 0.15);
+}
+
+/* =========================================================
+   ANIMATED SUNSET SKY BACKGROUND & AMBIENT ORNAMENTS
+   ========================================================= */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  color: var(--ink);
+  background: linear-gradient(
+    135deg,
+    #ffedd5 0%,
+    #fde68a 22%,
+    #fecdd3 45%,
+    #e0f2fe 72%,
+    #ccfbf1 100%
+  );
+  background-size: 400% 400%;
+  animation: sunsetSky 22s ease-in-out infinite;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.4s ease, font-size 0.25s ease;
+}
+
+@keyframes sunsetSky {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 50% 25%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 80%; }
+}
+
+/* Ambient Floating Frangipani & Tropical Glow Layer */
+.ambient-scene {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-cloud {
+  position: absolute;
+  opacity: 0.42;
+  filter: drop-shadow(0 8px 16px rgba(245, 158, 11, 0.12));
+}
+
+.ambient-cloud.c1 {
+  top: 12%;
+  left: -180px;
+  width: 240px;
+  animation: cloudDriftSlow 48s linear infinite;
+}
+
+.ambient-cloud.c2 {
+  top: 38%;
+  left: -220px;
+  width: 190px;
+  opacity: 0.3;
+  animation: cloudDriftSlow 62s linear infinite 14s;
+}
+
+.ambient-cloud.c3 {
+  top: 68%;
+  left: -160px;
+  width: 210px;
+  opacity: 0.25;
+  animation: cloudDriftSlow 55s linear infinite 26s;
+}
+
+@keyframes cloudDriftSlow {
+  0% { transform: translateX(-240px) translateY(0); }
+  50% { transform: translateX(55vw) translateY(-12px); }
+  100% { transform: translateX(115vw) translateY(0); }
+}
+
+.floating-kamboja {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  opacity: 0.55;
+  animation: kambojaSway 7s ease-in-out infinite;
+}
+
+.floating-kamboja.k1 {
+  top: 18%;
+  right: 4%;
+  animation-duration: 6.5s;
+}
+
+.floating-kamboja.k2 {
+  top: 52%;
+  left: 3%;
+  width: 36px;
+  height: 36px;
+  animation-duration: 8s;
+  animation-delay: -2s;
+}
+
+.floating-kamboja.k3 {
+  bottom: 14%;
+  right: 5%;
+  width: 40px;
+  height: 40px;
+  animation-duration: 7.4s;
+  animation-delay: -4s;
+}
+
+@keyframes kambojaSway {
+  0%, 100% { transform: translateY(0) rotate(-10deg) scale(1); }
+  50% { transform: translateY(-14px) rotate(14deg) scale(1.06); }
+}
+
+/* =========================================================
+   HERO HEADER: BALI SUNSET, CLOUDS, PALMS, KAMBOJA & WAVES
+   ========================================================= */
+header {
+  background: linear-gradient(
+    130deg,
+    #071e3d 0%,
+    #0f4c75 26%,
+    #0d9488 52%,
+    #ea580c 78%,
+    #f59e0b 100%
+  );
+  background-size: 280% 280%;
+  animation: headerSunset 16s ease infinite;
+  color: #fff;
+  padding: 54px 24px 96px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 12px 36px rgba(10, 46, 77, 0.25);
+}
+
+@keyframes headerSunset {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Glowing Bali Sun */
+.hero-sun {
+  position: absolute;
+  right: 12%;
+  top: 24px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffbeb 0%, #fde047 38%, #f97316 72%, rgba(244, 63, 94, 0) 100%);
+  box-shadow: 0 0 60px rgba(253, 224, 71, 0.65), 0 0 110px rgba(249, 115, 22, 0.45);
+  animation: sunPulse 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes sunPulse {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.92; }
+  50% { transform: translateY(-8px) scale(1.08); opacity: 1; }
+}
+
+/* Moving Header Clouds */
+.hero-clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-cloud {
+  position: absolute;
+  fill: rgba(255, 255, 255, 0.22);
+}
+
+.hero-cloud.hc1 {
+  top: 18px;
+  left: -160px;
+  width: 180px;
+  animation: heroCloudMove 34s linear infinite;
+}
+
+.hero-cloud.hc2 {
+  top: 52px;
+  left: -200px;
+  width: 140px;
+  fill: rgba(254, 243, 199, 0.26);
+  animation: heroCloudMove 44s linear infinite 11s;
+}
+
+.hero-cloud.hc3 {
+  top: 28px;
+  left: -140px;
+  width: 160px;
+  fill: rgba(255, 255, 255, 0.16);
+  animation: heroCloudMove 39s linear infinite 21s;
+}
+
+@keyframes heroCloudMove {
+  0% { transform: translateX(-200px); }
+  100% { transform: translateX(115vw); }
+}
+
+/* Swaying Palm Trees in Header */
+.palm-deco {
+  position: absolute;
+  top: -10px;
+  width: 190px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.88;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
+}
+
+.palm-left {
+  left: -28px;
+  transform-origin: bottom left;
+  animation: palmSwayLeft 5.5s ease-in-out infinite;
+}
+
+.palm-right {
+  right: -28px;
+  transform-origin: bottom right;
+  animation: palmSwayRight 6.2s ease-in-out infinite;
+}
+
+@keyframes palmSwayLeft {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(4.5deg) scale(1.02); }
+}
+
+@keyframes palmSwayRight {
+  0%, 100% { transform: scaleX(-1) rotate(0deg); }
+  50% { transform: scaleX(-1) rotate(5deg); }
+}
+
+/* Header Content Container */
+.header-inner {
+  max-width: 1020px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+
+.bali-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin-bottom: 12px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.kamboja-spin {
+  width: 20px;
+  height: 20px;
+  animation: flowerSpin 12s linear infinite;
+}
+
+@keyframes flowerSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-shadow: 0 4px 18px rgba(7, 30, 61, 0.45);
+  animation: fadeUp 0.7s ease both;
+}
+
+header p {
+  margin: 0 0 8px;
+  opacity: 0.96;
+  max-width: 780px;
+  line-height: 1.6;
+  font-size: 16px;
+  text-shadow: 0 2px 8px rgba(7, 30, 61, 0.35);
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+header p small {
+  color: #fde68a;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Topbar Controls */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 3;
+  animation: fadeUp 0.7s 0.18s ease both;
+}
+
+.topbar button {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--navy);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.topbar button:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+  background: #fef3c7;
+  color: #071e3d;
+}
+
+.topbar button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Layered Animated Ocean Waves at Bottom of Header */
+.ocean-waves {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 76px;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wave-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  display: flex;
+}
+
+.wave-track svg {
+  width: 50%;
+  height: 100%;
+  display: block;
+}
+
+.wave-track.w1 {
+  opacity: 0.35;
+  animation: waveSlide 18s linear infinite;
+}
+
+.wave-track.w2 {
+  opacity: 0.6;
+  animation: waveSlideReverse 14s linear infinite;
+}
+
+.wave-track.w3 {
+  opacity: 0.95;
+  animation: waveSlide 11s linear infinite;
+}
+
+@keyframes waveSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes waveSlideReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* =========================================================
+   MAIN CONTAINER & FLOATING CARDS
+   ========================================================= */
+main {
+  max-width: 1040px;
+  margin: -18px auto 40px;
+  padding: 0 20px 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+  border: 1px solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both, cardFloat 7s ease-in-out infinite;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+/* Staggered floating delays for cards */
+main > .card:nth-of-type(odd) {
+  animation-delay: 0.05s, 0s;
+}
+main > .card:nth-of-type(even) {
+  animation-delay: 0.12s, -3.5s;
+}
+
+/* Top Tropical Accent Bar on Every Card */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--teal), var(--gold), var(--amber), var(--teal));
+  background-size: 200% 100%;
+  animation: accentFlow 8s linear infinite;
+}
+
+@keyframes accentFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card h2 {
+  margin: 4px 0 12px;
+  font-size: 23px;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.2px;
+}
+
+.card h2::before {
+  content: "✿";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #d97706;
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+  animation: kambojaSway 5s ease-in-out infinite;
+}
+
+.card p {
+  line-height: 1.65;
+  margin: 8px 0;
+}
+
+/* =========================================================
+   FORM CONTROLS & RESPONSIVE FILTER LAYOUT
+   ========================================================= */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px 18px;
+  margin-top: 8px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 700;
+  display: block;
+  margin: 10px 0 6px;
+  color: var(--navy);
+  font-size: 14.5px;
+  transition: color 0.2s ease;
+}
+
+.form-field label {
+  margin-top: 4px;
+}
+
+select,
+input:not([type="checkbox"]),
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--ink);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease, background 0.25s ease;
+}
+
+select:hover,
+input:not([type="checkbox"]):hover,
+textarea:hover {
+  border-color: #94a3b8;
+}
+
+select:focus,
+input:not([type="checkbox"]):focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Checkbox Pills */
+.checkbox-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: rgba(240, 253, 250, 0.7);
+  border: 1px dashed rgba(13, 148, 136, 0.35);
+  border-radius: 14px;
+}
+
+.checkbox-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkbox-row label:hover {
+  transform: translateY(-2px);
+  border-color: var(--teal);
+  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.12);
+}
+
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--teal);
+  cursor: pointer;
+  margin: 0;
+}
+
+/* =========================================================
+   ANIMATED BUTTONS (CTA & SMALL)
+   ========================================================= */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+button.cta {
+  background: linear-gradient(110deg, #f59e0b 0%, #ea580c 50%, #f59e0b 100%);
+  background-size: 200% 100%;
+  border: 0;
+  color: #fff;
+  font-weight: 800;
+  padding: 13px 22px;
+  border-radius: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 12px;
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.32);
+  position: relative;
+  overflow: hidden;
+  animation: ctaBgShift 5s ease infinite;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+@keyframes ctaBgShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+button.cta::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: buttonShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes buttonShimmer {
+  0% { left: -60%; }
+  45%, 100% { left: 130%; }
+}
+
+button.cta:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(234, 88, 12, 0.45);
+  filter: brightness(1.06);
+}
+
+button.cta:active {
+  transform: translateY(0) scale(0.97);
+}
+
+button.small {
+  background: linear-gradient(135deg, var(--navy), #0e7490);
+  color: #fff;
+  border: 0;
+  padding: 9px 15px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 6px;
+  box-shadow: 0 4px 12px rgba(10, 46, 77, 0.2);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, background 0.25s ease;
+}
+
+button.small:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(135deg, #0d9488, #0284c7);
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.32);
+}
+
+button.small:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.action-bar button.cta,
+.action-bar button.small {
+  margin-top: 4px;
+  margin-right: 0;
+}
+
+/* =========================================================
+   RECOMMENDATION GRID, CARDS, HOVER LIFT & PHOTO ZOOM
+   ========================================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 22px;
+  margin-top: 16px;
+}
+
+.item {
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 20px;
+  padding: 0 0 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(10, 46, 77, 0.08);
+  animation: itemEntrance 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Staggered fallback delays for items without inline delay */
+.grid > .item:nth-child(1) { animation-delay: 40ms; }
+.grid > .item:nth-child(2) { animation-delay: 110ms; }
+.grid > .item:nth-child(3) { animation-delay: 180ms; }
+.grid > .item:nth-child(4) { animation-delay: 250ms; }
+.grid > .item:nth-child(5) { animation-delay: 320ms; }
+.grid > .item:nth-child(6) { animation-delay: 390ms; }
+
+@keyframes itemEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.item:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow: 0 22px 44px rgba(10, 46, 77, 0.22), 0 6px 18px rgba(13, 148, 136, 0.16);
+  border-color: rgba(13, 148, 136, 0.45);
+}
+
+.item .body {
+  padding: 4px 18px 0;
+  flex: 1;
+}
+
+.item h3 {
+  margin: 14px 0 8px;
+  font-size: 19px;
+  color: var(--navy);
+  transition: color 0.25s ease;
+}
+
+.item:hover h3 {
+  color: var(--teal);
+}
+
+.item a {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(13, 148, 136, 0.5);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.item a:hover {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+
+/* Photo Container & Smooth Zoom Effect */
+.photo {
+  height: 195px;
+  background: linear-gradient(135deg, #0f4c75, #0d9488, #f59e0b);
+  background-size: 200% 200%;
+  animation: headerSunset 12s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 30, 61, 0.55) 0%, rgba(7, 30, 61, 0) 55%);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.35s ease;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+}
+
+.item:hover .photo img {
+  transform: scale(1.1) rotate(0.6deg);
+  filter: saturate(1.12) contrast(1.03);
+}
+
+.photo .cap {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(7, 30, 61, 0.72);
+  backdrop-filter: blur(6px);
+  color: #f8fafc;
+  padding: 4px 10px;
+  border-radius: 999px;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Tags, Scores, Why & Tip Boxes */
+.tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
+  color: #0f4c75;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 12px;
+  margin: 2px 5px 4px 0;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.item:hover .tag {
+  transform: translateY(-1px);
+}
+
+.score {
+  display: inline-block;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, var(--teal), #0284c7);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  box-shadow: 0 3px 10px rgba(13, 148, 136, 0.25);
+}
+
+.why {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+  padding: 11px 13px;
+  margin-top: 12px;
+  font-size: 13.8px;
+  line-height: 1.5;
+}
+
+.tip {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border-left: 4px solid var(--teal);
+  border-radius: 12px;
+  padding: 11px 13px;
+  margin-top: 10px;
+  font-size: 13.8px;
+  line-height: 1.5;
+}
+
+.stars button {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stars button:hover {
+  transform: scale(1.3) rotate(8deg);
+}
+
+small {
+  color: #64748b;
+}
+
+.how {
+  line-height: 1.65;
+}
+
+.warn {
+  background: linear-gradient(135deg, #fef3c7, #ffedd5);
+  border-left: 5px solid var(--amber);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 14.5px;
+  margin-top: 14px;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.1);
+}
+
+iframe {
+  box-shadow: 0 8px 24px rgba(10, 46, 77, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+iframe:hover {
+  box-shadow: 0 12px 32px rgba(13, 148, 136, 0.25);
+}
+
+/* Itinerary & Day Trip Lists */
+#trip ul,
+#daytrip ol {
+  padding-left: 20px;
+  line-height: 1.75;
+}
+
+#trip li,
+#daytrip li {
+  margin-bottom: 4px;
+}
+
+#fxout,
+#shareout,
+#reportout {
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* =========================================================
+   FOOTER WAVE DECORATION
+   ========================================================= */
+.tropical-footer {
+  position: relative;
+  margin-top: 20px;
+  padding: 28px 20px 36px;
+  text-align: center;
+  color: var(--navy);
+  font-size: 14px;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   LARGE TEXT & DARK MODE SUPPORT
+   ========================================================= */
+body.big {
+  font-size: 18px;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #061326 0%, #0f172a 45%, #132a3e 80%, #1e1b4b 100%);
+  background-size: 300% 300%;
+  color: #e2e8f0;
+}
+
+body.dark header {
+  background: linear-gradient(130deg, #020617 0%, #0f172a 35%, #115e59 75%, #9a3412 100%);
+  background-size: 250% 250%;
+}
+
+body.dark .card {
+  background: rgba(15, 23, 42, 0.88);
+  color: #e2e8f0;
+  border-color: rgba(51, 65, 85, 0.85);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+body.dark .card h2,
+body.dark label,
+body.dark .item h3,
+body.dark .tropical-footer {
+  color: #f8fafc;
+}
+
+body.dark .item {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+body.dark .item:hover h3 {
+  color: #2dd4bf;
+}
+
+body.dark .tag {
+  background: rgba(15, 118, 110, 0.35);
+  color: #99f6e4;
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+body.dark select,
+body.dark input:not([type="checkbox"]),
+body.dark textarea,
+body.dark .comments input {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+body.dark .checkbox-row {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: #334155;
+}
+
+body.dark .checkbox-row label {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark .why {
+  background: rgba(66, 32, 6, 0.85);
+  color: #fde68a;
+  border-left-color: #f59e0b;
+}
+
+body.dark .tip {
+  background: rgba(5, 46, 22, 0.85);
+  color: #bbf7d0;
+  border-left-color: #10b981;
+}
+
+body.dark .warn {
+  background: rgba(69, 26, 3, 0.9);
+  color: #fed7aa;
+  border-left-color: #f97316;
+}
+
+body.dark .comments p {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark small {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION & PRINT
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #trip, #trip * {
+    visibility: visible;
+  }
+  #trip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
 </style>
 </head>
 <body>
+
+<!-- Ambient Background Scene: Drifting Clouds & Swaying Frangipani (Bunga Kamboja) -->
+<div class="ambient-scene" aria-hidden="true">
+  <svg class="ambient-cloud c1" viewBox="0 0 240 90">
+    <path fill="#ffffff" d="M45,75 Q20,75 20,52 Q20,32 42,30 Q52,10 78,12 Q102,4 122,22 Q145,14 162,32 Q192,32 195,54 Q195,75 170,75 Z"/>
+  </svg>
+  <svg class="ambient-cloud c2" viewBox="0 0 240 90">
+    <path fill="#ffffff" d="M45,75 Q20,75 20,52 Q20,32 42,30 Q52,10 78,12 Q102,4 122,22 Q145,14 162,32 Q192,32 195,54 Q195,75 170,75 Z"/>
+  </svg>
+  <svg class="ambient-cloud c3" viewBox="0 0 240 90">
+    <path fill="#ffffff" d="M45,75 Q20,75 20,52 Q20,32 42,30 Q52,10 78,12 Q102,4 122,22 Q145,14 162,32 Q192,32 195,54 Q195,75 170,75 Z"/>
+  </svg>
+
+  <!-- Floating Frangipani Flowers -->
+  <svg class="floating-kamboja k1" viewBox="0 0 100 100">
+    <g transform="translate(50,50)">
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="12" fill="#facc15"/>
+      <circle cx="0" cy="0" r="6" fill="#f59e0b"/>
+    </g>
+  </svg>
+  <svg class="floating-kamboja k2" viewBox="0 0 100 100">
+    <g transform="translate(50,50)">
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="12" fill="#facc15"/>
+      <circle cx="0" cy="0" r="6" fill="#f59e0b"/>
+    </g>
+  </svg>
+  <svg class="floating-kamboja k3" viewBox="0 0 100 100">
+    <g transform="translate(50,50)">
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-24" rx="13" ry="24" fill="#ffffff" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="12" fill="#facc15"/>
+      <circle cx="0" cy="0" r="6" fill="#f59e0b"/>
+    </g>
+  </svg>
+</div>
+
 <header>
-<h1 id="t-title">Smart Bali Guide</h1>
-<p id="t-sub">Rekomendasi cerdas wisata dan UMKM Bali. Jawab 4 pertanyaan, sistem AI rekomendasi kami menghitung kecocokan dan menjelaskan alasannya, bukan sekadar menampilkan daftar acak.</p>
-<p><small>AI Web Innovation Challenge - Bali Digifest 2026 | Bidang: Bali Smart Society | MVP Tahap 1</small></p>
-<div class="topbar"><button onclick="setLang('id')">Bahasa Indonesia</button><button onclick="setLang('en')">English</button><button onclick="document.body.classList.toggle('dark')" id="btn-dark">Mode gelap</button></div>
+  <!-- Glowing Sunset Orb -->
+  <div class="hero-sun" aria-hidden="true"></div>
+
+  <!-- Moving Clouds in Hero Sky -->
+  <div class="hero-clouds" aria-hidden="true">
+    <svg class="hero-cloud hc1" viewBox="0 0 220 80">
+      <path d="M35,65 Q15,65 15,46 Q15,28 34,26 Q44,10 68,12 Q88,4 106,20 Q126,12 142,28 Q168,28 170,48 Q170,65 148,65 Z"/>
+    </svg>
+    <svg class="hero-cloud hc2" viewBox="0 0 220 80">
+      <path d="M35,65 Q15,65 15,46 Q15,28 34,26 Q44,10 68,12 Q88,4 106,20 Q126,12 142,28 Q168,28 170,48 Q170,65 148,65 Z"/>
+    </svg>
+    <svg class="hero-cloud hc3" viewBox="0 0 220 80">
+      <path d="M35,65 Q15,65 15,46 Q15,28 34,26 Q44,10 68,12 Q88,4 106,20 Q126,12 142,28 Q168,28 170,48 Q170,65 148,65 Z"/>
+    </svg>
+  </div>
+
+  <!-- Swaying Tropical Palm Fronds -->
+  <svg class="palm-deco palm-left" viewBox="0 0 200 220" aria-hidden="true">
+    <path d="M10,220 Q35,140 70,75" stroke="#052e16" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M68,78 Q125,45 175,65 Q125,75 68,78 Z" fill="#064e3b"/>
+    <path d="M66,82 Q135,75 185,105 Q125,102 66,82 Z" fill="#047857"/>
+    <path d="M64,88 Q120,108 160,145 Q108,125 64,88 Z" fill="#059669"/>
+    <path d="M68,74 Q95,22 145,20 Q105,48 68,74 Z" fill="#065f46"/>
+    <path d="M62,80 Q30,35 5,45 Q35,65 62,80 Z" fill="#047857"/>
+  </svg>
+
+  <svg class="palm-deco palm-right" viewBox="0 0 200 220" aria-hidden="true">
+    <path d="M10,220 Q35,140 70,75" stroke="#052e16" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M68,78 Q125,45 175,65 Q125,75 68,78 Z" fill="#064e3b"/>
+    <path d="M66,82 Q135,75 185,105 Q125,102 66,82 Z" fill="#047857"/>
+    <path d="M64,88 Q120,108 160,145 Q108,125 64,88 Z" fill="#059669"/>
+    <path d="M68,74 Q95,22 145,20 Q105,48 68,74 Z" fill="#065f46"/>
+  </svg>
+
+  <div class="header-inner">
+    <div class="bali-badge">
+      <svg class="kamboja-spin" viewBox="0 0 100 100" aria-hidden="true">
+        <g transform="translate(50,50)">
+          <ellipse cx="0" cy="-25" rx="13" ry="24" fill="#ffffff" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-25" rx="13" ry="24" fill="#ffffff" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-25" rx="13" ry="24" fill="#ffffff" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-25" rx="13" ry="24" fill="#ffffff" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-25" rx="13" ry="24" fill="#ffffff" transform="rotate(288)"/>
+          <circle cx="0" cy="0" r="12" fill="#facc15"/>
+        </g>
+      </svg>
+      <span>Pesona Pulau Dewata • AI Pariwisata &amp; UMKM Lokal</span>
+    </div>
+
+    <h1 id="t-title">Smart Bali Guide</h1>
+    <p id="t-sub">Rekomendasi cerdas wisata dan UMKM Bali. Jawab 4 pertanyaan, sistem AI rekomendasi kami menghitung kecocokan dan menjelaskan alasannya, bukan sekadar menampilkan daftar acak.</p>
+    <p><small>AI Web Innovation Challenge - Bali Digifest 2026 | Bidang: Bali Smart Society | MVP Tahap 1</small></p>
+    <div class="topbar">
+      <button onclick="setLang('id')">Bahasa Indonesia</button>
+      <button onclick="setLang('en')">English</button>
+      <button onclick="document.body.classList.toggle('dark')" id="btn-dark">Mode gelap</button>
+    </div>
+  </div>
+
+  <!-- Gentle Animated Ocean Waves -->
+  <div class="ocean-waves" aria-hidden="true">
+    <div class="wave-track w1">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,40 C300,110 600,-20 900,50 C1050,85 1150,60 1200,40 L1200,120 L0,120 Z" fill="#ffffff"/>
+      </svg>
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,40 C300,110 600,-20 900,50 C1050,85 1150,60 1200,40 L1200,120 L0,120 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div class="wave-track w2">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,60 C250,0 550,110 850,45 C1020,10 1120,40 1200,60 L1200,120 L0,120 Z" fill="#fef3c7"/>
+      </svg>
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,60 C250,0 550,110 850,45 C1020,10 1120,40 1200,60 L1200,120 L0,120 Z" fill="#fef3c7"/>
+      </svg>
+    </div>
+    <div class="wave-track w3">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,75 C320,120 620,25 920,75 C1060,98 1140,85 1200,75 L1200,120 L0,120 Z" fill="#ffedd5"/>
+      </svg>
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,75 C320,120 620,25 920,75 C1060,98 1140,85 1200,75 L1200,120 L0,120 Z" fill="#ffedd5"/>
+      </svg>
+    </div>
+  </div>
 </header>
+
 <main>
-<div class="card">
-<h2 id="t-find">Cari rekomendasi untukmu</h2>
-<label id="l-interest">Minat utama kamu?</label>
-<select id="interest">
-<option value="alam">Wisata alam</option><option value="budaya">Budaya dan sejarah</option>
-<option value="kuliner">Kuliner</option><option value="belanja">Belanja UMKM dan kerajinan</option>
-<option value="pantai">Pantai dan santai</option><option value="penginapan">Penginapan</option>
-</select>
-<label id="l-region">Wilayah yang kamu tuju?</label>
-<select id="region">
-<option value="any">Bebas, di mana saja di Bali</option><option value="Badung">Badung</option>
-<option value="Gianyar">Gianyar</option><option value="Denpasar">Denpasar</option>
-<option value="Tabanan">Tabanan</option><option value="Klungkung">Klungkung</option><option value="Bangli">Bangli</option><option value="Karangasem">Karangasem</option><option value="Buleleng">Buleleng</option>
-</select>
-<label id="l-budget">Budget per orang?</label>
-<select id="budget">
-<option value="hemat">Hemat (di bawah Rp100 ribu)</option><option value="menengah">Menengah (Rp100-300 ribu)</option>
-<option value="premium">Premium (di atas Rp300 ribu)</option>
-</select>
-<label id="l-party">Dengan siapa kamu pergi?</label>
-<select id="party">
-<option value="keluarga">Keluarga</option><option value="pasangan">Pasangan</option>
-<option value="teman">Teman</option><option value="sendiri">Sendiri</option>
-</select>
-<label id="l-date">Tanggal kunjungan (untuk cek cuaca)</label>
-<input type="date" id="visitdate">
-<label id="l-type">Tampilkan?</label>
-<select id="type"><option value="all">Semua: wisata, UMKM, dan penginapan</option><option value="wisata">Hanya wisata</option><option value="umkm">Hanya UMKM</option><option value="penginapan">Hanya penginapan</option></select>
-<label id="l-search">Cari nama tempat atau produk</label>
-<input id="search" placeholder="misalnya: pura, kopi, pantai">
-<label id="l-maxcost">Batas biaya maksimum per orang (opsional, Rp)</label><input type="number" id="maxcost" min="0" placeholder="misalnya: 200000"><label><input type="checkbox" id="favfirst"> <span id="l-fav">Favorit dulu (rating tertinggi)</span></label><label><input type="checkbox" id="cheapest"> <span id="l-cheap">Termurah dulu</span></label><label><input type="checkbox" id="showall"> <span id="l-all">Tampilkan semua hasil</span></label><button class="small" onclick="resetForm()" id="btn-reset">Reset filter</button><button class="small" onclick="document.body.classList.toggle('big')" id="btn-big">Teks besar</button><button class="cta" onclick="recommend()" id="btn-find">Cari Rekomendasi AI</button><button class="small" onclick="nearestFromMe()" id="btn-near-me">Terdekat dari lokasiku</button>
-<p><small id="t-privacy">Semua rekomendasi dihitung di perangkatmu. Tidak ada data pribadi yang dikirim ke server, tidak ada API key.</small></p>
-</div>
+  <div class="card">
+    <h2 id="t-find">Cari rekomendasi untukmu</h2>
+    <div class="form-grid">
+      <div class="form-field">
+        <label id="l-interest">Minat utama kamu?</label>
+        <select id="interest">
+          <option value="alam">Wisata alam</option>
+          <option value="budaya">Budaya dan sejarah</option>
+          <option value="kuliner">Kuliner</option>
+          <option value="belanja">Belanja UMKM dan kerajinan</option>
+          <option value="pantai">Pantai dan santai</option>
+          <option value="penginapan">Penginapan</option>
+        </select>
+      </div>
 
-<div class="card">
-<h2 id="t-map">Peta Bali</h2>
-<p id="t-mapp">Peta di bawah ini adalah peta Google Maps yang disematkan, gratis tanpa API key. Geser dan zoom untuk melihat wilayah Bali, lalu gunakan tautan peta di setiap hasil rekomendasi untuk membuka lokasi tempat itu di Google Maps atau OpenStreetMap.</p>
-<iframe title="Peta Bali" src="https://maps.google.com/maps?q=Bali%2C%20Indonesia&z=10&output=embed" width="100%" height="320" style="border:0;border-radius:12px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-<p><small>Peta hanya untuk orientasi wilayah. Lokasi persis tiap tempat dibuka lewat tautan di hasil rekomendasi.</small></p>
-</div>
+      <div class="form-field">
+        <label id="l-region">Wilayah yang kamu tuju?</label>
+        <select id="region">
+          <option value="any">Bebas, di mana saja di Bali</option>
+          <option value="Badung">Badung</option>
+          <option value="Gianyar">Gianyar</option>
+          <option value="Denpasar">Denpasar</option>
+          <option value="Tabanan">Tabanan</option>
+          <option value="Klungkung">Klungkung</option>
+          <option value="Bangli">Bangli</option>
+          <option value="Karangasem">Karangasem</option>
+          <option value="Buleleng">Buleleng</option>
+        </select>
+      </div>
 
-<div class="card how">
-<h2 id="t-how">Bagaimana AI ini bekerja?</h2>
-<p id="t-howp">Ini adalah <b>sistem rekomendasi berbasis konten (content-based recommender)</b>, salah satu teknologi AI yang diakui panduan lomba. Setiap destinasi dan UMKM punya profil: kategori minat, wilayah, kisaran budget, dan cocok untuk siapa. Saat kamu mengisi formulir, sistem memberi skor untuk setiap profil: <b>Skor = 40 x kecocokan minat + 25 x kecocokan wilayah + 20 x kecocokan budget + 15 x kecocokan rombongan.</b> Hasil diurutkan dari skor tertinggi, dan setiap hasil menampilkan alasan kecocokannya. Jadi rekomendasi ini bisa dijelaskan, bukan kotak hitam. Catatan: wilayah bebas memberi 10 poin parsial, jadi skor maksimum tanpa filter wilayah adalah 85 tanpa penyesuaian cuaca, dan 95 saat hujan untuk belanja/kuliner karena bonus hujan 10 poin.</p>
-<div class="warn" id="t-warn"><b>Untuk wisatawan asing dan semua pengunjung:</b> hormati adat setempat. Masuk pura wajib memakai kain dan selendang, ikuti arahan petugas, jangan memotret upacara tanpa izin, dan periksa arus laut sebelum berenang. Harga di bawah adalah estimasi MVP, bukan harga resmi, dan bisa berubah.</div>
-</div>
+      <div class="form-field">
+        <label id="l-budget">Budget per orang?</label>
+        <select id="budget">
+          <option value="hemat">Hemat (di bawah Rp100 ribu)</option>
+          <option value="menengah">Menengah (Rp100-300 ribu)</option>
+          <option value="premium">Premium (di atas Rp300 ribu)</option>
+        </select>
+      </div>
 
-<div id="weather"></div>
-<div id="results"></div>
+      <div class="form-field">
+        <label id="l-party">Dengan siapa kamu pergi?</label>
+        <select id="party">
+          <option value="keluarga">Keluarga</option>
+          <option value="pasangan">Pasangan</option>
+          <option value="teman">Teman</option>
+          <option value="sendiri">Sendiri</option>
+        </select>
+      </div>
 
-<div class="card">
-<h2 id="t-near">Cari penginapan dekat destinasi</h2>
-<p id="t-nearp">Sudah menentukan destinasi? Pilih destinasi di bawah, sistem menampilkan penginapan contoh yang satu wilayah (kabupaten) dengan destinasi itu. Ini kedekatan tingkat wilayah, bukan jarak meter pasti, karena data MVP belum memakai koordinat tiap tempat.</p>
-<label id="l-dest">Destinasi yang sudah kamu tentukan</label>
-<select id="destselect"></select>
-<button class="cta" onclick="findNearbyHotels()" id="btn-near">Cari Penginapan Dekat Sini</button>
-<div id="nearresults"></div>
-</div>
+      <div class="form-field">
+        <label id="l-date">Tanggal kunjungan (untuk cek cuaca)</label>
+        <input type="date" id="visitdate">
+      </div>
 
-<div class="card">
-<h2 id="t-trip">Itinerary saya</h2>
-<p id="t-tripp">Simpan tempat dari hasil rekomendasi ke sini. Itinerary tersimpan di perangkatmu dan dikelompokkan per wilayah supaya perjalananmu tidak bolak-balik.</p>
-<div id="trip"></div><button class="small" onclick="window.print()" id="btn-print">Cetak Itinerary</button>
-</div>
+      <div class="form-field">
+        <label id="l-type">Tampilkan?</label>
+        <select id="type">
+          <option value="all">Semua: wisata, UMKM, dan penginapan</option>
+          <option value="wisata">Hanya wisata</option>
+          <option value="umkm">Hanya UMKM</option>
+          <option value="penginapan">Hanya penginapan</option>
+        </select>
+      </div>
 
+      <div class="form-field">
+        <label id="l-search">Cari nama tempat atau produk</label>
+        <input id="search" placeholder="misalnya: pura, kopi, pantai">
+      </div>
 
-<div class="card">
-<h2 id="t-money">Konverter mata uang untuk wisatawan</h2>
-<p id="t-moneyp">Masukkan jumlah dalam Rupiah, lihat estimasi dalam USD dan EUR. Kurs diambil dari Frankfurter, gratis tanpa API key. Jika kurs gagal dimuat, konverter memakai kurs cadangan yang jelas ditulis sebagai estimasi dan bukan kurs resmi.</p>
-<label id="l-amount">Jumlah (Rp)</label><input type="number" id="idr" value="500000">
-<button class="cta" onclick="convert()" id="btn-convert">Hitung Estimasi</button>
-<p id="fxout"></p>
-<p><small id="t-currnote">Kurs adalah estimasi dan berubah setiap hari. Selalu cek kurs resmi sebelum transaksi besar.</small></p>
-</div>
+      <div class="form-field">
+        <label id="l-maxcost">Batas biaya maksimum per orang (opsional, Rp)</label>
+        <input type="number" id="maxcost" min="0" placeholder="misalnya: 200000">
+      </div>
+    </div>
 
-<div class="card">
-<h2 id="t-safe">Nomor darurat dan info penting di Bali</h2>
-<p id="t-safe1"><b>Darurat umum Indonesia: 112</b> | <b>Polisi: 110</b> | <b>Ambulans: 118 / 119</b> | <b>Pemadam kebakaran: 113</b></p>
-<p id="t-safe2">Untuk wisatawan: simpan nomor hotel dan pemandu, bawa fotokopi paspor, dan hubungi kedutaan masing-masing bila paspor hilang. Nomor-nomor di atas adalah nomor darurat publik Indonesia, bukan nomor pribadi panitia atau tim.</p>
-<p id="t-safe3"><b>Estimasi waktu tempuh antar wilayah (kendaraan, kondisi normal, bukan jaminan):</b> Denpasar ke Badung sekitar 30 menit, Denpasar ke Gianyar sekitar 45-60 menit, Gianyar ke Tabanan sekitar 60-90 menit, Denpasar ke Buleleng sekitar 2-3 jam, Denpasar ke Klungkung sekitar 45-60 menit. Macet, upacara, dan cuaca bisa menambah waktu secara signifikan. Rencanakan maksimal 2 wilayah besar per hari.</p>
-</div>
+    <div class="checkbox-row">
+      <label><input type="checkbox" id="favfirst"> <span id="l-fav">Favorit dulu (rating tertinggi)</span></label>
+      <label><input type="checkbox" id="cheapest"> <span id="l-cheap">Termurah dulu</span></label>
+      <label><input type="checkbox" id="showall"> <span id="l-all">Tampilkan semua hasil</span></label>
+    </div>
 
-<div class="card">
-<h2 id="t-share">Bagikan itinerary</h2>
-<p id="t-sharep">Salin itinerary yang sudah disimpan, atau buka WhatsApp dengan teks itinerary yang sudah disiapkan. Tidak ada data yang dikirim ke server kami, teks hanya dibuka di aplikasi WhatsApp di perangkatmu.</p>
-<button class="cta" onclick="shareTrip()" id="btn-share">Bagikan via WhatsApp</button>
-<button class="cta" onclick="copyTrip()" id="btn-copy">Salin Itinerary</button>
-<p id="shareout"></p>
-</div>
+    <div class="action-bar">
+      <button class="cta" onclick="recommend()" id="btn-find">Cari Rekomendasi AI</button>
+      <button class="small" onclick="nearestFromMe()" id="btn-near-me">Terdekat dari lokasiku</button>
+      <button class="small" onclick="resetForm()" id="btn-reset">Reset filter</button>
+      <button class="small" onclick="document.body.classList.toggle('big')" id="btn-big">Teks besar</button>
+    </div>
+    <p><small id="t-privacy">Semua rekomendasi dihitung di perangkatmu. Tidak ada data pribadi yang dikirim ke server, tidak ada API key.</small></p>
+  </div>
 
-<div class="card">
-<h2 id="t-day">Rute 1 hari otomatis</h2>
-<p id="t-dayp">Pilih wilayah, sistem menyusun rute 1 hari: 3 wisata + 1 kuliner/UMKM di wilayah itu, dengan total estimasi biaya. Tekan simpan untuk memasukkannya ke itinerary.</p>
-<label id="l-dayreg">Wilayah rute</label><select id="dayregion"><option value="Badung">Badung</option><option value="Gianyar">Gianyar</option><option value="Denpasar">Denpasar</option><option value="Tabanan">Tabanan</option><option value="Klungkung">Klungkung</option><option value="Bangli">Bangli</option><option value="Karangasem">Karangasem</option><option value="Buleleng">Buleleng</option></select>
-<button class="cta" onclick="makeDayTrip()" id="btn-day">Buat Rute 1 Hari</button>
-<div id="daytrip"></div>
-</div>
+  <div class="card">
+    <h2 id="t-map">Peta Bali</h2>
+    <p id="t-mapp">Peta di bawah ini adalah peta Google Maps yang disematkan, gratis tanpa API key. Geser dan zoom untuk melihat wilayah Bali, lalu gunakan tautan peta di setiap hasil rekomendasi untuk membuka lokasi tempat itu di Google Maps atau OpenStreetMap.</p>
+    <iframe title="Peta Bali" src="https://maps.google.com/maps?q=Bali%2C%20Indonesia&z=10&output=embed" width="100%" height="340" style="border:0;border-radius:16px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <p><small>Peta hanya untuk orientasi wilayah. Lokasi persis tiap tempat dibuka lewat tautan di hasil rekomendasi.</small></p>
+  </div>
 
-<div class="card">
-<h2 id="t-fav">Tempat favorit saya</h2>
-<p id="t-favp">Tempat yang kamu beri 4 atau 5 bintang muncul di sini. Rating tersimpan di perangkatmu saja, jadi ini favorit personal, bukan hitungan pengunjung global (hitungan global butuh server dan API, dicatat sebagai pengembangan Tahap 2).</p>
-<div id="favlist"></div>
-</div>
+  <div class="card how">
+    <h2 id="t-how">Bagaimana AI ini bekerja?</h2>
+    <p id="t-howp">Ini adalah <b>sistem rekomendasi berbasis konten (content-based recommender)</b>, salah satu teknologi AI yang diakui panduan lomba. Setiap destinasi dan UMKM punya profil: kategori minat, wilayah, kisaran budget, dan cocok untuk siapa. Saat kamu mengisi formulir, sistem memberi skor untuk setiap profil: <b>Skor = 40 x kecocokan minat + 25 x kecocokan wilayah + 20 x kecocokan budget + 15 x kecocokan rombongan.</b> Hasil diurutkan dari skor tertinggi, dan setiap hasil menampilkan alasan kecocokannya. Jadi rekomendasi ini bisa dijelaskan, bukan kotak hitam. Catatan: wilayah bebas memberi 10 poin parsial, jadi skor maksimum tanpa filter wilayah adalah 85 tanpa penyesuaian cuaca, dan 95 saat hujan untuk belanja/kuliner karena bonus hujan 10 poin.</p>
+    <div class="warn" id="t-warn"><b>Untuk wisatawan asing dan semua pengunjung:</b> hormati adat setempat. Masuk pura wajib memakai kain dan selendang, ikuti arahan petugas, jangan memotret upacara tanpa izin, dan periksa arus laut sebelum berenang. Harga di bawah adalah estimasi MVP, bukan harga resmi, dan bisa berubah.</div>
+  </div>
 
-<div class="card">
-<h2 id="t-report">Lapor masalah atau hal yang tidak diketahui</h2>
-<p id="t-reportp">Ada data salah, foto tidak sesuai, harga meleset, atau tempat tutup/pindah? Laporkan di sini. Jujur: produk ini belum punya nomor CS resmi, jadi laporan dibuka di WhatsApp dan kamu pilih sendiri kontak tujuannya, atau salin teks laporannya. Tidak ada data yang dikirim ke server kami.</p>
-<label id="l-rplace">Tempat yang dilaporkan</label><select id="reportplace"></select>
-<label id="l-rtype">Jenis masalah</label><select id="reporttype"><option value="Data salah">Data salah</option><option value="Foto tidak sesuai">Foto tidak sesuai</option><option value="Harga tidak sesuai">Harga tidak sesuai</option><option value="Tempat tutup atau pindah">Tempat tutup atau pindah</option><option value="Lainnya">Lainnya</option></select>
-<label id="l-rdesc">Jelaskan masalahnya</label><textarea id="reportdesc" rows="4" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px"></textarea>
-<button class="cta" onclick="sendReport()" id="btn-report">Kirim Laporan via WhatsApp</button>
-<button class="cta" onclick="copyReport()" id="btn-reportcopy">Salin Laporan</button>
-<p id="reportout"></p>
-</div>
+  <div id="weather"></div>
+  <div id="results"></div>
 
-<div class="card">
-<h2 id="t-about">Tentang produk ini</h2>
-<p id="t-aboutp">Smart Bali Guide dibuat untuk masalah nyata: wisatawan dan warga sering bingung memilih destinasi dan UMKM yang sesuai budget, minat, dan wilayah, sehingga UMKM lokal yang bagus kalah dari tempat yang sekadar viral. MVP ini menghubungkan keduanya dalam satu rekomendasi yang transparan, lengkap dengan tips etika, estimasi biaya, dan durasi kunjungan.</p>
-<p><small id="t-aboutfoot">Data contoh MVP: 39 destinasi dan UMKM plus 6 penginapan contoh di Bali, total 45 item. Harga adalah estimasi, bukan harga resmi. Data lengkap, sumber, dan batasan produk ditulis di README repositori.</small></p>
-</div>
+  <div class="card">
+    <h2 id="t-near">Cari penginapan dekat destinasi</h2>
+    <p id="t-nearp">Sudah menentukan destinasi? Pilih destinasi di bawah, sistem menampilkan penginapan contoh yang satu wilayah (kabupaten) dengan destinasi itu. Ini kedekatan tingkat wilayah, bukan jarak meter pasti, karena data MVP belum memakai koordinat tiap tempat.</p>
+    <label id="l-dest">Destinasi yang sudah kamu tentukan</label>
+    <select id="destselect"></select>
+    <button class="cta" onclick="findNearbyHotels()" id="btn-near">Cari Penginapan Dekat Sini</button>
+    <div id="nearresults"></div>
+  </div>
+
+  <div class="card">
+    <h2 id="t-trip">Itinerary saya</h2>
+    <p id="t-tripp">Simpan tempat dari hasil rekomendasi ke sini. Itinerary tersimpan di perangkatmu dan dikelompokkan per wilayah supaya perjalananmu tidak bolak-balik.</p>
+    <div id="trip"></div>
+    <button class="small" onclick="window.print()" id="btn-print">Cetak Itinerary</button>
+  </div>
+
+  <div class="card">
+    <h2 id="t-money">Konverter mata uang untuk wisatawan</h2>
+    <p id="t-moneyp">Masukkan jumlah dalam Rupiah, lihat estimasi dalam USD dan EUR. Kurs diambil dari Frankfurter, gratis tanpa API key. Jika kurs gagal dimuat, konverter memakai kurs cadangan yang jelas ditulis sebagai estimasi dan bukan kurs resmi.</p>
+    <label id="l-amount">Jumlah (Rp)</label>
+    <input type="number" id="idr" value="500000">
+    <button class="cta" onclick="convert()" id="btn-convert">Hitung Estimasi</button>
+    <p id="fxout"></p>
+    <p><small id="t-currnote">Kurs adalah estimasi dan berubah setiap hari. Selalu cek kurs resmi sebelum transaksi besar.</small></p>
+  </div>
+
+  <div class="card">
+    <h2 id="t-safe">Nomor darurat dan info penting di Bali</h2>
+    <p id="t-safe1"><b>Darurat umum Indonesia: 112</b> | <b>Polisi: 110</b> | <b>Ambulans: 118 / 119</b> | <b>Pemadam kebakaran: 113</b></p>
+    <p id="t-safe2">Untuk wisatawan: simpan nomor hotel dan pemandu, bawa fotokopi paspor, dan hubungi kedutaan masing-masing bila paspor hilang. Nomor-nomor di atas adalah nomor darurat publik Indonesia, bukan nomor pribadi panitia atau tim.</p>
+    <p id="t-safe3"><b>Estimasi waktu tempuh antar wilayah (kendaraan, kondisi normal, bukan jaminan):</b> Denpasar ke Badung sekitar 30 menit, Denpasar ke Gianyar sekitar 45-60 menit, Gianyar ke Tabanan sekitar 60-90 menit, Denpasar ke Buleleng sekitar 2-3 jam, Denpasar ke Klungkung sekitar 45-60 menit. Macet, upacara, dan cuaca bisa menambah waktu secara signifikan. Rencanakan maksimal 2 wilayah besar per hari.</p>
+  </div>
+
+  <div class="card">
+    <h2 id="t-share">Bagikan itinerary</h2>
+    <p id="t-sharep">Salin itinerary yang sudah disimpan, atau buka WhatsApp dengan teks itinerary yang sudah disiapkan. Tidak ada data yang dikirim ke server kami, teks hanya dibuka di aplikasi WhatsApp di perangkatmu.</p>
+    <div class="action-bar">
+      <button class="cta" onclick="shareTrip()" id="btn-share">Bagikan via WhatsApp</button>
+      <button class="cta" onclick="copyTrip()" id="btn-copy">Salin Itinerary</button>
+    </div>
+    <p id="shareout"></p>
+  </div>
+
+  <div class="card">
+    <h2 id="t-day">Rute 1 hari otomatis</h2>
+    <p id="t-dayp">Pilih wilayah, sistem menyusun rute 1 hari: 3 wisata + 1 kuliner/UMKM di wilayah itu, dengan total estimasi biaya. Tekan simpan untuk memasukkannya ke itinerary.</p>
+    <label id="l-dayreg">Wilayah rute</label>
+    <select id="dayregion">
+      <option value="Badung">Badung</option>
+      <option value="Gianyar">Gianyar</option>
+      <option value="Denpasar">Denpasar</option>
+      <option value="Tabanan">Tabanan</option>
+      <option value="Klungkung">Klungkung</option>
+      <option value="Bangli">Bangli</option>
+      <option value="Karangasem">Karangasem</option>
+      <option value="Buleleng">Buleleng</option>
+    </select>
+    <button class="cta" onclick="makeDayTrip()" id="btn-day">Buat Rute 1 Hari</button>
+    <div id="daytrip"></div>
+  </div>
+
+  <div class="card">
+    <h2 id="t-fav">Tempat favorit saya</h2>
+    <p id="t-favp">Tempat yang kamu beri 4 atau 5 bintang muncul di sini. Rating tersimpan di perangkatmu saja, jadi ini favorit personal, bukan hitungan pengunjung global (hitungan global butuh server dan API, dicatat sebagai pengembangan Tahap 2).</p>
+    <div id="favlist"></div>
+  </div>
+
+  <div class="card">
+    <h2 id="t-report">Lapor masalah atau hal yang tidak diketahui</h2>
+    <p id="t-reportp">Ada data salah, foto tidak sesuai, harga meleset, atau tempat tutup/pindah? Laporkan di sini. Jujur: produk ini belum punya nomor CS resmi, jadi laporan dibuka di WhatsApp dan kamu pilih sendiri kontak tujuannya, atau salin teks laporannya. Tidak ada data yang dikirim ke server kami.</p>
+    <label id="l-rplace">Tempat yang dilaporkan</label>
+    <select id="reportplace"></select>
+    <label id="l-rtype">Jenis masalah</label>
+    <select id="reporttype">
+      <option value="Data salah">Data salah</option>
+      <option value="Foto tidak sesuai">Foto tidak sesuai</option>
+      <option value="Harga tidak sesuai">Harga tidak sesuai</option>
+      <option value="Tempat tutup atau pindah">Tempat tutup atau pindah</option>
+      <option value="Lainnya">Lainnya</option>
+    </select>
+    <label id="l-rdesc">Jelaskan masalahnya</label>
+    <textarea id="reportdesc" rows="4" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px"></textarea>
+    <div class="action-bar">
+      <button class="cta" onclick="sendReport()" id="btn-report">Kirim Laporan via WhatsApp</button>
+      <button class="cta" onclick="copyReport()" id="btn-reportcopy">Salin Laporan</button>
+    </div>
+    <p id="reportout"></p>
+  </div>
+
+  <div class="card">
+    <h2 id="t-about">Tentang produk ini</h2>
+    <p id="t-aboutp">Smart Bali Guide dibuat untuk masalah nyata: wisatawan dan warga sering bingung memilih destinasi dan UMKM yang sesuai budget, minat, dan wilayah, sehingga UMKM lokal yang bagus kalah dari tempat yang sekadar viral. MVP ini menghubungkan keduanya dalam satu rekomendasi yang transparan, lengkap dengan tips etika, estimasi biaya, dan durasi kunjungan.</p>
+    <p><small id="t-aboutfoot">Data contoh MVP: 39 destinasi dan UMKM plus 6 penginapan contoh di Bali, total 45 item. Harga adalah estimasi, bukan harga resmi. Data lengkap, sumber, dan batasan produk ditulis di README repositori.</small></p>
+  </div>
 </main>
+
+<footer class="tropical-footer" aria-hidden="true">
+  <span>✿ Smart Bali Guide • Harmoni Alam, Budaya &amp; UMKM Lokal Bali ✿</span>
+</footer>
+
 <script>
 let LANG='id';
 // Kunci API OPSIONAL: kosong = mode tanpa key (versi sekarang, demo stabil, tanpa secret di repo).
