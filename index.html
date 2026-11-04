@@ -5,18 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Bali Guide - Rekomendasi Cerdas Wisata dan UMKM Bali</title>
 <style>
-*{box-sizing:border-box} body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#eef4f8;color:#16324f}
-header{background:#0b3d66;color:#fff;padding:28px 20px} header h1{margin:0 0 6px;font-size:30px} header p{margin:0;opacity:.9;max-width:760px}
-.topbar{display:flex;gap:8px;margin-top:14px} .topbar button{background:#fff;color:#0b3d66;border:0;padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer}
-main{max-width:1000px;margin:0 auto;padding:20px} .card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.08);margin-bottom:18px}
-label{font-weight:700;display:block;margin:12px 0 6px} select,input{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px}
-button.cta{background:#f59e0b;border:0;color:#1f2937;font-weight:800;padding:13px 20px;border-radius:10px;font-size:16px;cursor:pointer;margin-top:16px}
-button.small{background:#0b3d66;color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;margin-top:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.item{border:1px solid #e2e8f0;border-radius:12px;padding:16px} .item h3{margin:0 0 6px} .tag{display:inline-block;background:#e0f2fe;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px 3px 2px 0}
-.score{font-weight:800;color:#0b3d66} .why{background:#fffbeb;border-radius:9px;padding:10px;margin-top:10px;font-size:14px}
+*{box-sizing:border-box}
+:root{--navy:#0b3d66;--teal:#0ea5a4;--gold:#f59e0b;--ink:#16324f}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--ink);background:linear-gradient(120deg,#e0f2fe,#fef3c7,#e0f2fe);background-size:300% 300%;animation:sky 18s ease infinite}
+@keyframes sky{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+header{background:linear-gradient(120deg,#0b3d66,#0e7490,#f59e0b);background-size:200% 200%;animation:sky 14s ease infinite;color:#fff;padding:36px 20px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.18);filter:blur(2px)}
+header h1{margin:0 0 6px;font-size:34px;letter-spacing:.5px;animation:fadeUp .7s ease both} header p{margin:0;opacity:.95;max-width:760px;animation:fadeUp .7s .1s ease both}
+.topbar{display:flex;gap:8px;margin-top:14px;position:relative;z-index:1} .topbar button{background:rgba(255,255,255,.95);color:var(--navy);border:0;padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s} .topbar button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+main{max-width:1000px;margin:0 auto;padding:20px} .card{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(11,61,102,.14);margin-bottom:20px;border:1px solid rgba(255,255,255,.7);animation:fadeUp .6s ease both;transition:transform .25s,box-shadow .25s} .card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(11,61,102,.18)}
+label{font-weight:700;display:block;margin:12px 0 6px} select,input{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;transition:border-color .2s,box-shadow .2s} select:focus,input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,165,164,.25)}
+button.cta{background:linear-gradient(90deg,#f59e0b,#f97316);border:0;color:#fff;font-weight:800;padding:13px 20px;border-radius:12px;font-size:16px;cursor:pointer;margin-top:16px;transition:transform .2s,filter .2s} button.cta:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.05)} button.cta:active{transform:scale(.98)}
+button.small{background:var(--navy);color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;margin-top:10px;transition:transform .2s,background .2s} button.small:hover{transform:translateY(-1px);background:#0e7490}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.item{border:1px solid #e2e8f0;border-radius:16px;padding:0 0 16px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.07);animation:fadeUp .6s ease both;transition:transform .3s,box-shadow .3s} .item:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 18px 36px rgba(11,61,102,.22)}
+.item .body{padding:0 16px} .item h3{margin:12px 0 6px}
+.photo{height:180px;background:linear-gradient(120deg,#0e7490,#f59e0b);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;color:#fff;font-size:44px;font-weight:800}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s} .item:hover .photo img{transform:scale(1.06)}
+.photo .cap{position:absolute;left:8px;bottom:8px;font-size:11px;font-weight:600;background:rgba(0,0,0,.55);padding:3px 8px;border-radius:20px}
+.tag{display:inline-block;background:#e0f2fe;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px 3px 2px 0}
+.score{font-weight:800;color:var(--navy)} .why{background:#fffbeb;border-radius:9px;padding:10px;margin-top:10px;font-size:14px}
 .tip{background:#ecfdf5;border-radius:9px;padding:10px;margin-top:10px;font-size:14px}
 small{color:#64748b} .how{line-height:1.6} .warn{background:#fef3c7;border-radius:9px;padding:12px;font-size:14px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{body *{visibility:hidden} #trip,#trip *{visibility:visible} #trip{position:absolute;left:0;top:0;width:100%}}
 body.big{font-size:18px}
 </style>
@@ -78,6 +90,15 @@ body.big{font-size:18px}
 
 <div id="weather"></div>
 <div id="results"></div>
+
+<div class="card">
+<h2 id="t-near">Cari penginapan dekat destinasi</h2>
+<p id="t-nearp">Sudah menentukan destinasi? Pilih destinasi di bawah, sistem menampilkan penginapan contoh yang satu wilayah (kabupaten) dengan destinasi itu. Ini kedekatan tingkat wilayah, bukan jarak meter pasti, karena data MVP belum memakai koordinat tiap tempat.</p>
+<label id="l-dest">Destinasi yang sudah kamu tentukan</label>
+<select id="destselect"></select>
+<button class="cta" onclick="findNearbyHotels()" id="btn-near">Cari Penginapan Dekat Sini</button>
+<div id="nearresults"></div>
+</div>
 
 <div class="card">
 <h2 id="t-trip">Itinerary saya</h2>
@@ -181,6 +202,10 @@ document.getElementById('t-how').textContent=d.how; document.getElementById('t-t
 document.getElementById('t-sub').textContent=d.sub; document.getElementById('t-howp').innerHTML=d.howp; document.getElementById('t-warn').innerHTML=d.warn; document.getElementById('t-map').textContent=d.map; document.getElementById('t-privacy').textContent=d.privacy; document.getElementById('t-tripp').textContent=d.tripp; document.getElementById('t-aboutp').textContent=d.aboutp; document.getElementById('search').placeholder=d.searchph; document.getElementById('l-maxcost').textContent=d.maxcost; document.getElementById('btn-print').textContent=d.print; document.getElementById('l-all').textContent=d.all; document.getElementById('l-cheap').textContent=d.cheap; document.getElementById('btn-reset').textContent=d.reset; document.getElementById('btn-big').textContent=d.big; document.getElementById('t-mapp').textContent=d.mapp; document.getElementById('t-moneyp').textContent=d.moneyp; document.getElementById('btn-convert').textContent=d.convert; document.getElementById('t-sharep').textContent=d.sharep; document.getElementById('btn-share').textContent=d.sharebtn; document.getElementById('btn-copy').textContent=d.copybtn; document.getElementById('l-amount').textContent=d.amount; document.getElementById('t-currnote').textContent=d.currnote; document.getElementById('t-safe1').innerHTML='<b>'+d.safe1.split(' | ')[0]+'</b> | <b>'+d.safe1.split(' | ')[1]+'</b> | <b>'+d.safe1.split(' | ')[2]+'</b> | <b>'+d.safe1.split(' | ')[3]+'</b>'; document.getElementById('t-safe2').textContent=d.safe2; document.getElementById('t-safe3').textContent=d.safe3; document.getElementById('t-aboutfoot').textContent=d.aboutfoot; document.getElementById('maxcost').placeholder=d.maxcostph; if(document.getElementById('idr').value) convert(); if(!WEATHER) document.getElementById('weather').innerHTML=''; if(WEATHER && (document.getElementById('visitdate').value!==WEATHER.date || (document.getElementById('region').value==='any'?'Denpasar':document.getElementById('region').value)!==WEATHER.region)){WEATHER=null; document.getElementById('weather').innerHTML='';} document.getElementById('t-money').textContent=d.money; document.getElementById('t-safe').textContent=d.safe; document.getElementById('t-share').textContent=d.share;
 const opt={region:{any:['Bebas, di mana saja di Bali','Anywhere in Bali']},interest:{alam:['Wisata alam','Nature tourism'],budaya:['Budaya dan sejarah','Culture and history'],kuliner:['Kuliner','Food'],belanja:['Belanja UMKM dan kerajinan','MSME shopping and crafts'],pantai:['Pantai dan santai','Beach and relaxation'],penginapan:['Penginapan','Accommodation']},budget:{hemat:['Hemat (di bawah Rp100 ribu)','Budget (under Rp100 thousand)'],menengah:['Menengah (Rp100-300 ribu)','Mid-range (Rp100-300 thousand)'],premium:['Premium (di atas Rp300 ribu)','Premium (over Rp300 thousand)']},party:{keluarga:['Keluarga','Family'],pasangan:['Pasangan','Couple'],teman:['Teman','Friends'],sendiri:['Sendiri','Solo']},type:{all:['Semua: wisata, UMKM, dan penginapan','All: tourism, MSMEs, and accommodation'],wisata:['Hanya wisata','Tourism only'],umkm:['Hanya UMKM','MSMEs only'],penginapan:['Hanya penginapan','Accommodation only']}};
 for(const sid of Object.keys(opt)){const sel=document.getElementById(sid); if(!sel) continue; for(const o of sel.options){if(opt[sid][o.value]) o.textContent=opt[sid][o.value][l==='id'?0:1];}}
+document.getElementById('t-near').textContent=LANG==='id'?'Cari penginapan dekat destinasi':'Find accommodation near your destination';
+document.getElementById('t-nearp').textContent=LANG==='id'?'Sudah menentukan destinasi? Pilih destinasi di bawah, sistem menampilkan penginapan contoh yang satu wilayah (kabupaten) dengan destinasi itu. Ini kedekatan tingkat wilayah, bukan jarak meter pasti, karena data MVP belum memakai koordinat tiap tempat.':'Already decided your destination? Pick it below, and the system shows sample accommodation in the same region (regency) as that destination. This is region-level closeness, not an exact distance in metres, because MVP data does not yet use per-place coordinates.';
+document.getElementById('l-dest').textContent=LANG==='id'?'Destinasi yang sudah kamu tentukan':'Destination you have already decided';
+document.getElementById('btn-near').textContent=LANG==='id'?'Cari Penginapan Dekat Sini':'Find Accommodation Near Here';
 renderTrip(); if(WEATHER) renderWeather();
 if(document.getElementById('results').innerHTML.trim()){recommend(true, true);}
 
@@ -210,6 +235,17 @@ async function loadWeather(){
 }
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function resetForm(){document.getElementById('interest').value='alam'; document.getElementById('region').value='any'; document.getElementById('budget').value='hemat'; document.getElementById('party').value='keluarga'; document.getElementById('type').value='all'; document.getElementById('search').value=''; document.getElementById('maxcost').value=''; document.getElementById('visitdate').value=''; document.getElementById('showall').checked=false; document.getElementById('cheapest').checked=false; document.getElementById('results').innerHTML=''; WEATHER=null; document.getElementById('weather').innerHTML='';}
+async function loadPhotos(){
+  for(const img of document.querySelectorAll('img[data-photo]')){
+    try{
+      const q=encodeURIComponent(img.dataset.photo+' Bali');
+      const r=await fetch('https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch='+q+'&gsrnamespace=6&prop=pageimages&piprop=thumbnail&pithumbsize=800&format=json&origin=*');
+      const j=await r.json(); const pages=j.query&&j.query.pages?Object.values(j.query.pages):[];
+      const hit=pages.find(p=>p.thumbnail&&p.thumbnail.source);
+      if(hit) img.src=hit.thumbnail.source; else img.remove();
+    }catch(e){ img.remove(); }
+  }
+}
 async function recommend(skipWeather, noScroll){
   if(!skipWeather) await loadWeather();
   const interest=document.getElementById('interest').value, region=document.getElementById('region').value,
@@ -232,7 +268,8 @@ async function recommend(skipWeather, noScroll){
   const box=document.getElementById('results');
   if(!scored.length){box.innerHTML='<div class="card"><p>'+(LANG==='id'?'Tidak ada hasil yang cocok. Coba ubah kata kunci atau filter.':'No matching results. Try changing the keyword or filters.')+'</p></div>'; return;}
   box.innerHTML='<div class="card"><h2>'+(LANG==='id'?'Hasil rekomendasi untukmu':'Recommendations for you')+'</h2><p>'+(LANG==='id'?'Diurutkan dari skor kecocokan tertinggi. Skor maksimum 100.':'Sorted by highest match score. Maximum score is 100.')+'</p><div class="grid">'+
-  scored.map((x,i)=>`<div class="item"><h3>${esc(x.n)}</h3><span class="tag">${x.t==='umkm'?(LANG==='id'?'UMKM':'MSME'):x.t==='penginapan'?(LANG==='id'?'Penginapan':'Accommodation'):(LANG==='id'?'Wisata':'Tourism')}</span><span class="tag">${esc(x.reg)}</span><span class="tag">${esc(LANG==='id'?x.bud:(x.bud==='hemat'?'Budget':x.bud==='menengah'?'Mid-range':'Premium'))}</span><p>${esc(LANG==='id'?x.id:x.en)}</p><p class="score">${T[LANG].score}: ${x.score}/100</p><p>${T[LANG].cost}: ${fmt(x.cost)}${x.t==='penginapan'?(LANG==='id'?' per malam':' per night'):''} | ${T[LANG].time}: ${LANG==='id'?x.dur:(x.dur==='Seharian'?'Full day':x.dur==='Semalam'?'Per night':x.dur.replace(/(\d+) jam/, (mm,nn)=>nn+' hour'+(nn==='1'?'':'s')))}</p><p><a href="https://www.openstreetmap.org/search?query=${encodeURIComponent(x.n+' Bali')}" target="_blank" rel="noopener">${LANG==='id'?'Lihat di peta (OpenStreetMap)':'View on map (OpenStreetMap)'}</a> | <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x.n+' Bali')}" target="_blank" rel="noopener">Google Maps</a></p><div class="why">${T[LANG].why}: ${x.reasons.length?x.reasons.join(', '):(LANG==='id'?'pilihan umum yang masih relevan.':'a general option that is still relevant.')}</div><div class="tip">${T[LANG].tip}: ${esc(LANG==='id'?x.tipid:x.tipen)}</div><button class="small" onclick="addTrip(${x._idx})">${T[LANG].save}</button> <button class="small" onclick="sharePlace(${x._idx})">${LANG==='id'?'Bagikan tempat ini':'Share this place'}</button></div>`).join('')+'</div></div>';
+  scored.map((x,i)=>`<div class="item" style="animation-delay:${i*70}ms"><div class="photo"><span>${esc(x.n.charAt(0))}</span><img data-photo="${esc(x.n)}" alt="" loading="lazy" onerror="this.remove()"><span class="cap">Foto ilustrasi: Wikimedia Commons</span></div><div class="body"><h3>${esc(x.n)}</h3><span class="tag">${x.t==='umkm'?(LANG==='id'?'UMKM':'MSME'):x.t==='penginapan'?(LANG==='id'?'Penginapan':'Accommodation'):(LANG==='id'?'Wisata':'Tourism')}</span><span class="tag">${esc(x.reg)}</span><span class="tag">${esc(LANG==='id'?x.bud:(x.bud==='hemat'?'Budget':x.bud==='menengah'?'Mid-range':'Premium'))}</span><p>${esc(LANG==='id'?x.id:x.en)}</p><p class="score">${T[LANG].score}: ${x.score}/100</p><p>${T[LANG].cost}: ${fmt(x.cost)}${x.t==='penginapan'?(LANG==='id'?' per malam':' per night'):''} | ${T[LANG].time}: ${LANG==='id'?x.dur:(x.dur==='Seharian'?'Full day':x.dur==='Semalam'?'Per night':x.dur.replace(/(\d+) jam/, (mm,nn)=>nn+' hour'+(nn==='1'?'':'s')))}</p><p><a href="https://www.openstreetmap.org/search?query=${encodeURIComponent(x.n+' Bali')}" target="_blank" rel="noopener">${LANG==='id'?'Lihat di peta (OpenStreetMap)':'View on map (OpenStreetMap)'}</a> | <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x.n+' Bali')}" target="_blank" rel="noopener">Google Maps</a></p><div class="why">${T[LANG].why}: ${x.reasons.length?x.reasons.join(', '):(LANG==='id'?'pilihan umum yang masih relevan.':'a general option that is still relevant.')}</div><div class="tip">${T[LANG].tip}: ${esc(LANG==='id'?x.tipid:x.tipen)}</div><button class="small" onclick="addTrip(${x._idx})">${T[LANG].save}</button> <button class="small" onclick="sharePlace(${x._idx})">${LANG==='id'?'Bagikan tempat ini':'Share this place'}</button></div></div>`).join('')+'</div></div>';
+  loadPhotos();
   if(!noScroll) box.scrollIntoView({behavior:'smooth'});
 }
 function sharePlace(i){const x=DATA[i]; const txt=(LANG==='id'?'Rekomendasi dari Smart Bali Guide: ':'Recommendation from Smart Bali Guide: ')+x.n+' ('+x.reg+', '+fmt(x.cost)+') - '+(LANG==='id'?x.id:x.en); window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');}
@@ -263,6 +300,24 @@ function renderTrip(){
   const by={}; trip.forEach(x=>{(by[x.reg]=by[x.reg]||[]).push(x);});
   el.innerHTML=Object.keys(by).map(r=>`<h3>${esc(r)}</h3><ul>${by[r].map(x=>`<li>${esc(x.n)} - ${fmt(x.cost)}</li>`).join('')}</ul>`).join('')+`<p><b>${LANG==='id'?'Total estimasi biaya':'Total estimated cost'}: ${fmt(total)}</b></p><button class="small" onclick="clearTrip()">${LANG==='id'?'Hapus itinerary':'Clear itinerary'}</button>`;
 }
+function populateDest(){
+  const sel=document.getElementById('destselect'); if(!sel) return;
+  sel.innerHTML=DATA.filter(x=>x.t!=='penginapan').map(x=>`<option value="${DATA.indexOf(x)}">${esc(x.n)} (${esc(x.reg)})</option>`).join('');
+}
+function findNearbyHotels(){
+  const idx=parseInt(document.getElementById('destselect').value,10);
+  const dest=DATA[idx]; if(!dest) return;
+  const d=T[LANG];
+  const hotels=DATA.map((x,i)=>({...x,_idx:i})).filter(x=>x.t==='penginapan').sort((a,b)=>(b.reg===dest.reg)-(a.reg===dest.reg));
+  const same=hotels.filter(x=>x.reg===dest.reg);
+  const box=document.getElementById('nearresults');
+  const head=same.length
+    ? (LANG==='id'?`<p><b>${same.length} penginapan satu wilayah dengan ${esc(dest.n)} (${esc(dest.reg)}).</b></p>`:`<p><b>${same.length} accommodation in the same region as ${esc(dest.n)} (${esc(dest.reg)}).</b></p>`)
+    : (LANG==='id'?`<p><b>Belum ada penginapan contoh di wilayah ${esc(dest.reg)}.</b> Berikut semua penginapan contoh yang tersedia, pilih yang wilayahnya paling dekat dengan rencanamu.</p>`:`<p><b>No sample accommodation yet in ${esc(dest.reg)}.</b> Below are all available sample accommodation options; pick the region closest to your plan.</p>`);
+  box.innerHTML=head+'<div class="grid">'+hotels.map((x,i)=>`<div class="item" style="animation-delay:${i*70}ms"><div class="photo"><span>${esc(x.n.charAt(0))}</span><img data-photo="${esc(x.n)}" alt="" loading="lazy" onerror="this.remove()"><span class="cap">Foto ilustrasi: Wikimedia Commons</span></div><div class="body"><h3>${esc(x.n)}</h3><span class="tag">${LANG==='id'?'Penginapan':'Accommodation'}</span><span class="tag">${esc(x.reg)}</span><span class="tag">${x.reg===dest.reg?(LANG==='id'?'Satu wilayah':'Same region'):(LANG==='id'?'Wilayah lain':'Other region')}</span><p>${esc(LANG==='id'?x.id:x.en)}</p><p>${d.cost}: ${fmt(x.cost)}${LANG==='id'?' per malam':' per night'} | ${d.time}: ${LANG==='id'?'Semalam':'Per night'}</p><p><a href="https://www.openstreetmap.org/search?query=${encodeURIComponent(x.n+' Bali')}" target="_blank" rel="noopener">${LANG==='id'?'Lihat di peta (OpenStreetMap)':'View on map (OpenStreetMap)'}</a> | <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x.n+' Bali')}" target="_blank" rel="noopener">Google Maps</a></p><div class="tip">${d.tip}: ${esc(LANG==='id'?x.tipid:x.tipen)}</div><button class="small" onclick="addTrip(${x._idx})">${d.save}</button> <button class="small" onclick="sharePlace(${x._idx})">${LANG==='id'?'Bagikan tempat ini':'Share this place'}</button></div></div>`).join('')+'</div>';
+  loadPhotos(); box.scrollIntoView({behavior:'smooth'});
+}
+populateDest();
 renderTrip();
 </script>
 </body>

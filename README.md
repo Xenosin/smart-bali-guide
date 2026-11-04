@@ -48,3 +48,6 @@ Muhammad Alva Rayno, Universitas Teuku Umar, Program Studi Teknik Mesin, NIM 240
 - Open-Meteo untuk prakiraan cuaca.
 - Frankfurter untuk kurs mata uang.
 - Data tempat bersifat umum dan ditulis ulang sebagai data contoh MVP, bukan salinan dari situs pihak ketiga.
+- Foto ilustrasi tiap tempat: foto diambil otomatis dari pencarian Wikimedia Commons berdasarkan nama tempat, dengan cadangan gradasi warna bila foto tidak ditemukan; ditulis jelas sebagai foto ilustrasi, bukan foto resmi tempat.
+- UI epik: header dan latar gradasi animasi, kartu kaca, animasi muncul bertahap pada hasil, foto membesar saat kartu disentuh, dan animasi dimatikan otomatis bila perangkat mengaktifkan pengurangan gerakan.
+- Cari penginapan dekat destinasi: pilih destinasi yang sudah ditentukan, tampil penginapan satu wilayah (kabupaten) dengan destinasi itu di urutan atas; kedekatan dinyatakan jujur sebagai tingkat wilayah, bukan jarak meter pasti.
