@@ -23,6 +23,7 @@ Website satu halaman yang meminta minat, wilayah, budget, rombongan, tanggal kun
 - Filter batas biaya maksimum per orang.
 - Tombol cetak khusus itinerary (saat print, hanya bagian itinerary yang tercetak).
 - Opsi tampilkan semua hasil (bukan hanya 6 teratas), tombol reset filter, dan tombol teks besar untuk keterbacaan.
+- Jumlah hasil yang ditampilkan ditulis jelas di atas hasil, dan tombol bagikan per tempat lewat WhatsApp.
 
 ## Teknologi AI
 Sistem rekomendasi berbasis konten (content-based recommender). Tidak ada panggilan model bahasa eksternal, tidak ada API key, tidak ada server, dan tidak ada data pribadi yang dikirim keluar. Cuaca dari Open-Meteo (gratis, tanpa API key). Kurs dari Frankfurter (gratis, tanpa API key). Jika layanan eksternal gagal, aplikasi tetap jalan dengan pesan yang jujur dan kurs cadangan yang dinyatakan sebagai estimasi.
